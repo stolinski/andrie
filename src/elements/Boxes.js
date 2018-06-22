@@ -26,6 +26,7 @@ export const Zone = styled.section`
 export const Box = styled.div`
   background: ${blue};
   padding: 19%;
+  width: 50%;
   color: white;
   &:last-child {
     margin-left: 10px;
