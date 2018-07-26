@@ -1,6 +1,6 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
 import styled, { css } from 'styled-components'
-import { blue } from './colors'
+import { blue, rgba } from './colors'
 
 const MODIFIER_ZONE = {
   blank: () => `
@@ -14,13 +14,40 @@ const MODIFIER_ZONE = {
 
 export const Zone = styled.section`
   margin-bottom: 10px;
-  background: ${blue};
+  ${'' /* background: ${rgba(blue, 0.4)}; */}
+  ${'' /* background: ${rgba(blue, 1)}; */}
   padding: 5rem 10%;
   color: white;
+  position: relative;
   h2 {
     text-tranform: uppercase;
   }
   ${applyStyleModifiers(MODIFIER_ZONE)};
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${rgba(blue, 1)};
+    z-index: -2;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: -1;
+    background-size: cover;
+    ${({ image }) =>
+      image &&
+      `
+      background-image: url(${image});
+  `};
 `
 
 export const Box = styled.div`
