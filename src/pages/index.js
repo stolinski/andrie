@@ -8,7 +8,7 @@ import greatLakes from '../images/Great-Lakes-blue.png'
 
 const IndexPage = () => (
   <div>
-    <Zone modifiers={['right', 'dark']} image={hero}>
+    <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
       <h2>The Midwest’s Premiere Marine services company</h2>
       <p>
         From the Great Lakes to the Illinois and Mississippi river systems,

@@ -10,6 +10,10 @@ const MODIFIER_ZONE = {
   center: () => `
     text-align: center;
   `,
+  hero: () => `
+    padding-top: calc(130px + 5rem);
+    margin-top: -130px;
+  `,
 }
 
 export const Zone = styled.section`
