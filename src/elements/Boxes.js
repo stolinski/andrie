@@ -11,7 +11,7 @@ const MODIFIER_ZONE = {
     text-align: center;
   `,
   hero: () => `
-    padding-top: calc(130px + 5rem);
+    padding-top: calc(130px + 10rem);
     margin-top: -130px;
   `,
 }
@@ -20,7 +20,7 @@ export const Zone = styled.section`
   margin-bottom: 10px;
   ${'' /* background: ${rgba(blue, 0.4)}; */}
   ${'' /* background: ${rgba(blue, 1)}; */}
-  padding: 5rem 10%;
+  padding: 16rem 10%;
   color: white;
   position: relative;
   h2 {
