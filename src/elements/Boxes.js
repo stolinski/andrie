@@ -1,6 +1,6 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
 import styled, { css } from 'styled-components'
-import { blue, rgba } from './colors'
+import { blue, rgba, darkBlue } from './colors'
 
 const MODIFIER_ZONE = {
   blank: () => `
@@ -14,17 +14,33 @@ const MODIFIER_ZONE = {
     padding-top: calc(130px + 10rem);
     margin-top: -130px;
   `,
+  right: () => `
+    .zone-content {
+      width: 60%;
+      margin-left: auto;
+    }
+  `,
+  left: () => `
+    .zone-content {
+      width: 60%;
+      margin-right: auto;
+    }
+  `,
+  short: () => `
+    padding: 6rem 10%;
+  `,
 }
 
 export const Zone = styled.section`
   margin-bottom: 10px;
-  ${'' /* background: ${rgba(blue, 0.4)}; */}
-  ${'' /* background: ${rgba(blue, 1)}; */}
-  padding: 16rem 10%;
+  padding: 14rem 10%;
   color: white;
   position: relative;
   h2 {
     text-tranform: uppercase;
+  }
+  p {
+    margin-bottom: 4rem;
   }
   ${applyStyleModifiers(MODIFIER_ZONE)};
   &:before {
@@ -34,8 +50,10 @@ export const Zone = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${rgba(blue, 1)};
-    z-index: -2;
+    opacity: 0.8;
+    background: ${darkBlue};
+    z-index: -1;
+    transition: 0.3s all ease;
   }
   &:after {
     content: '';
@@ -44,23 +62,77 @@ export const Zone = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
-    z-index: -1;
+    z-index: -2;
     background-size: cover;
     ${({ image }) =>
       image &&
       `
       background-image: url(${image});
   `};
+  }
+  &:hover {
+    &:before {
+      opacity: 0.7;
+    }
+  }
 `
 
 export const Box = styled.div`
-  background: ${blue};
-  padding: 19%;
+  padding: 7%;
   width: 50%;
+  text-align: center;
   color: white;
+  position: relative;
+  display: flex;
+  .box-inner {
+    border: solid 1px white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14%;
+    transition: 0.6s all ease;
+  }
+  &:hover {
+    .box-inner {
+      transform: scale(1.1);
+    }
+  }
   &:last-child {
     margin-left: 10px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${darkBlue};
+    opacity: 0.8;
+    z-index: -1;
+    transition: 0.3s all ease;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-size: cover;
+    ${({ image }) =>
+      image &&
+      `
+      background-image: url(${image});
+    `};
+  }
+  &:hover {
+    &:before {
+      opacity: 0.7;
+    }
   }
 `
 

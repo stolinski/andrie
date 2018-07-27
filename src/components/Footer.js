@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 import { darkBlue, lightBlue } from '../elements'
 import { serif, sans } from '../utilities'
+
+import logo from '../images/andrie_logo-site.svg'
 
 export default class Footer extends Component {
   render() {
@@ -14,6 +17,15 @@ export default class Footer extends Component {
           <a href="#">Linkedin</a>
           <a href="#">For Employees</a>
         </FooterNav>
+        <Link
+          to="/"
+          style={{
+            color: 'white',
+            textDecoration: 'none',
+          }}
+        >
+          <img src={logo} alt="Andrie Inc." style={{ width: '200px' }} />
+        </Link>
         <ContactInfo>
           <li>561 E. Western Avenue</li>
           <li>Muskegon, MI 49442</li>

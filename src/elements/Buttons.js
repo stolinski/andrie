@@ -18,7 +18,7 @@ export const Button = styled(Link)`
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 5px 20px;
+  padding: 10px 20px;
   border: solid 1px white;
   ${applyStyleModifiers(MODIFIER_ZONE)};
 `
