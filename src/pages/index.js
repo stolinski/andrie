@@ -5,7 +5,7 @@ import { Zone, BoxWrapper, Box, Button } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 import greatLakes from '../images/Great-Lakes-blue.png'
-import barbara from '../images/Barbara-Safety-section.jpg'
+import barbara from '../images/barbara.jpg'
 import waves from '../images/SarahAndrie-makingwaves.jpg'
 import community from '../images/Andrie-biking-community.jpg'
 
