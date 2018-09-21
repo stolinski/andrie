@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 
 export const serif = () => css`
   font-family: Merriweather;

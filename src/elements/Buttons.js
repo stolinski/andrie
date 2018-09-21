@@ -1,7 +1,7 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import Link from 'gatsby-link'
-import { blue, rgba } from './colors'
+import { blue } from './colors'
 
 const MODIFIER_ZONE = {
   dark: () => `

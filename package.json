@@ -4,13 +4,15 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.247",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.10",
-    "gatsby-source-wordpress": "^2.0.93",
+    "gatsby": "^2.0.6",
+    "gatsby-link": "^2.0.1",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-source-wordpress": "^3.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
-    "styled-components": "^3.3.0",
-    "styled-components-modifiers": "^1.0.1",
+    "styled-components": "^3.4.9",
+    "styled-components-modifiers": "^1.0.3",
     "typeface-merriweather": "^0.0.54",
     "typeface-montserrat": "^0.0.54"
   },
@@ -25,7 +27,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^1.12.0"
+    "prettier": "^1.14.3"
   },
   "repository": {
     "type": "git",

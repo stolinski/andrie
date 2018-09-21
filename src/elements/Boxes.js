@@ -1,6 +1,7 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
-import styled, { css } from 'styled-components'
-import { blue, rgba, darkBlue } from './colors'
+import styled from 'styled-components'
+import { darkBlue, blue, darkGrey, lightBlue } from './colors'
+import { sans } from '../utilities/Type'
 
 const MODIFIER_ZONE = {
   blank: () => `
@@ -28,6 +29,13 @@ const MODIFIER_ZONE = {
   `,
   short: () => `
     padding: 6rem 10%;
+  `,
+  solid: () => `
+    background: ${blue};
+    transition: none;
+  `,
+  pale: () => `
+    background: ${lightBlue};
   `,
 }
 
@@ -139,4 +147,17 @@ export const Box = styled.div`
 export const BoxWrapper = styled.section`
   display: flex;
   margin-bottom: 10px;
+`
+
+export const FormBox = styled.section`
+  background: ${darkGrey};
+  padding: 5rem 25%;
+  text-align: center;
+  h3 {
+    color: white;
+  }
+  p {
+    font-size: 1rem;
+    ${sans()};
+  }
 `

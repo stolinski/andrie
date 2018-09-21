@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import Nav from './Nav'
 
 import logo from '../images/andrie_logo-site.svg'
@@ -29,4 +29,6 @@ const HeaderWrapper = styled.header`
   padding: 20px 10%;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
+  position: relative;
 `

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 import { darkBlue, lightBlue } from '../elements'
-import { serif, sans } from '../utilities'
+import { sans } from '../utilities'
 
 import logo from '../images/andrie_logo-site.svg'
 
