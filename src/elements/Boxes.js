@@ -37,6 +37,10 @@ const MODIFIER_ZONE = {
   pale: () => `
     background: ${lightBlue};
   `,
+  grey: () => `
+    background: ${darkGrey};
+    color: #333;
+  `,
 }
 
 export const Zone = styled.section`

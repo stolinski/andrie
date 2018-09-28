@@ -1,22 +1,43 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { lightBlue } from '../elements'
 
 const Links = [
-  'safety',
-  'company',
-  'services & sites',
-  'equipment',
-  'jobs',
-  'contact',
+  {
+    link: 'safety',
+    label: 'Safety',
+  },
+  {
+    link: 'company',
+    label: 'Company',
+  },
+  {
+    link: 'services',
+    label: 'services & sites',
+  },
+  {
+    link: 'equipment',
+    label: 'Equipment',
+  },
+  {
+    link: 'jobs',
+    label: 'Jobs',
+  },
+  {
+    link: 'contact',
+    label: 'Contact',
+  },
 ]
 
 export default class Nav extends Component {
   render() {
     return (
       <Navigation>
-        {Links.map(link => (
-          <Link to={link}>{link}</Link>
+        {Links.map(({ link, label }) => (
+          <Link activeClassName="active" to={link}>
+            {label}
+          </Link>
         ))}
       </Navigation>
     )
@@ -35,5 +56,11 @@ const Navigation = styled.nav`
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
+    border-bottom: solid 4px transparent;
+    transition: 0.3s ease border;
+    &:hover,
+    &.active {
+      border-bottom: solid 4px ${lightBlue};
+    }
   }
 `
