@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import { Zone, BoxWrapper, Box, Button } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
-import greatLakes from '../images/Great-Lakes-blue.png'
+import greatLakes from '../images/greatlakes-background.jpg'
 import barbara from '../images/barbara.jpg'
 import waves from '../images/SarahAndrie-makingwaves.jpg'
 import community from '../images/Andrie-biking-community.jpg'
@@ -22,10 +22,10 @@ const IndexPage = () => (
             services to a broad range of customers – from local, national, and
             global corporations to small and medium-sized companies alike.
           </p>
-          <Button>About Andrie</Button>
+          <Button to="/company">About Andrie</Button>
         </div>
       </Zone>
-      <Zone modifiers={['left']} image={greatLakes}>
+      <Zone modifiers={['left', 'noOverlay']} image={greatLakes}>
         <div className="zone-content">
           <h2>connecting the great lakes and beyond since 1988</h2>
           <p>
@@ -33,7 +33,7 @@ const IndexPage = () => (
             marine customer base by executing Great Lakes projects and ventures
             from the Atlantic to the Pacific, from Canada to the Gulf of Mexico.
           </p>
-          <Button>Services & Site</Button>
+          <Button to="/services">Services & Site</Button>
         </div>
       </Zone>
       <Zone modifiers={['blank', 'center', 'short']}>

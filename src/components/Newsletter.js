@@ -6,10 +6,10 @@ export default class Newsletter extends Component {
   render() {
     return (
       <FormBox>
-        <form action="">
+        <NewsletterForm action="">
           <input type="text" placeholder="Email Address" />
           <button>Sign Up</button>
-        </form>
+        </NewsletterForm>
         <p>
           Updates on latest news, events and industry-related topics. Your info
           will not be shared with others.

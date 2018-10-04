@@ -46,6 +46,7 @@ export default class Nav extends Component {
 
 const Navigation = styled.nav`
   display: flex;
+  flex: 1;
   justify-content: space-between;
   width: 100%;
   margin-top: 50px;

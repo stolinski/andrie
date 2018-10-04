@@ -41,6 +41,11 @@ const MODIFIER_ZONE = {
     background: ${darkGrey};
     color: #333;
   `,
+  noOverlay:  () => `
+    &:before {
+      content: none;
+    }
+  `
 }
 
 export const Zone = styled.section`
@@ -54,7 +59,6 @@ export const Zone = styled.section`
   p {
     margin-bottom: 4rem;
   }
-  ${applyStyleModifiers(MODIFIER_ZONE)};
   &:before {
     content: '';
     position: absolute;
@@ -87,6 +91,7 @@ export const Zone = styled.section`
       opacity: 0.7;
     }
   }
+  ${applyStyleModifiers(MODIFIER_ZONE)};
 `
 
 export const Box = styled.div`
