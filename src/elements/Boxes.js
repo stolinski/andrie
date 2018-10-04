@@ -54,7 +54,8 @@ export const Zone = styled.section`
   color: white;
   position: relative;
   h2 {
-    text-tranform: uppercase;
+    text-transform: uppercase;
+    font-size: 2rem;
   }
   p {
     margin-bottom: 4rem;
@@ -164,6 +165,8 @@ export const FormBox = styled.section`
   text-align: center;
   h3 {
     color: white;
+    text-transform: uppercase;
+    font-size: 2rem;
   }
   p {
     font-size: 1rem;

@@ -2,13 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Zone, Button, FormBox, blue, SplitLayout } from '../elements'
+import { serif } from '../utilities';
 
 import hero from '../images/Home-HeroSpace.jpg'
+import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
+import linkedin from '../images/linkedin-circle.svg';
+import facebook from '../images/facebook-circle.svg';
 
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
+      <Zone modifiers={['right', 'dark', 'hero']} image={rebecca}>
         <div className="zone-content">
           <h2>Contact Andrie</h2>
           <p>
@@ -31,7 +35,6 @@ const IndexPage = () => (
       </Zone>
       <FormBox>
         <h3>Send an Email</h3>
-        <h2>connecting the great lakes and beyond since 1988</h2>
         <p>
           If you'd like to speak with someone in a specific department, please
           send us a note using form below.
@@ -52,26 +55,54 @@ const IndexPage = () => (
           <button style={{ marginLeft: 'auto' }}>Send</button>
         </ContactForm>
       </FormBox>
-      <Zone modifiers={['center', 'solid', 'short']}>
+      <ContacZone modifiers={['center', 'solid', 'short']}>
         <h3>Connect</h3>
         <h4>Learn more about Andrie and join our community online.</h4>
-        <SplitLayout>
+        <ContactSplit>
           <div>
+            <img src={linkedin} alt="LinkedIn Logo" style={{width:'80px'}}/>
             <h5>LinkedIn</h5>
             <p>Corporate connections, resumes, industry news</p>
-          </div>
-          <div>
+            </div>
+            <div>
+            <img src={facebook} alt="Facebook Logo" style={{width:'80px'}}/>
             <h5>Facebook</h5>
             <p>Community sponsorships, latest happening and events</p>
           </div>
-        </SplitLayout>
+        </ContactSplit>
         <Button modifiers={['dark']}>View All Equipment</Button>
-      </Zone>
+      </ContacZone>
     </div>
   </Layout>
 )
 
 export default IndexPage
+
+const ContactSplit = styled(SplitLayout)`
+  justify-content: space-around;
+  > * {
+    max-width: 300px;
+  }
+  h5 {
+    font-size: 1.75rem;
+  }
+`;
+
+const ContacZone = styled(Zone)`
+  h3 {
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+    text-transform: none;
+    font-weight: 400;
+    ${serif()};
+  }
+  p {
+    margin-bottom: 0;
+  }
+`;
 
 const ContactForm = styled.form`
   label {

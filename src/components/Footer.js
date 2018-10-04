@@ -41,13 +41,13 @@ export default class Footer extends Component {
 
 const FooterContainer = styled.footer`
   background: ${darkBlue};
-  padding: 20px;
+  padding: 60px;
   text-align: center;
   color: white;
 `
 
 const FooterNav = styled.nav`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   a {
     text-transform: uppercase;
     color: ${lightBlue};

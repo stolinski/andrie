@@ -1,18 +1,25 @@
 import React from 'react'
+import styled from 'styled-components';
 import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
 import { Zone, BoxWrapper, Box, Button } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
-import greatLakes from '../images/Great-Lakes-blue.png'
+import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 import barbara from '../images/barbara.jpg'
-import waves from '../images/SarahAndrie-makingwaves.jpg'
+import ice from '../images/DSC_0266.jpg'
 import community from '../images/Andrie-biking-community.jpg'
 
 const IndexPage = () => (
   <Layout>
-    <div>
-      <Zone modifiers={['right', 'dark', 'hero', 'solid']} image={hero}>
+  <Zone modifiers={['right', 'dark', 'hero', 'solid']} image={hero}>
+  <JobsLayout>
+  <JobsImageCol>
+    <img src={ice} alt=""/>
+    <img src={barbara} alt=""/>
+    <img src={rebecca} alt=""/>
+  </JobsImageCol>
+  <div>
       <h2>Current Openings Page</h2>
 
 <p>This content will change as job openings change. Will need to determined what is here by default and/or on launch. Here is current text that could be refined and reused.</p>
@@ -36,9 +43,27 @@ const IndexPage = () => (
 <p>A career at Andrie provides the following compensations.</p>
 <p>To apply, please email copies of your TWIC, Passport, Driver's License, MMC, and a current resume to: careers@andrie.com. If your credentials meet the requirements for a current vacancy we will contact you with an application.</p>
 <p>We look forward to sailing with you!</p>
+</div>
+</JobsLayout>
       </Zone>
-    </div>
   </Layout>
 )
 
 export default IndexPage
+
+const JobsLayout = styled.div`
+  display: flex;
+  > *:first-child {
+    width: 40%;
+    margin-right: 5%;
+  }
+  > *:nth-child(2) {
+    flex: 1;
+  }
+`;
+
+const JobsImageCol = styled.div`
+  img {
+    margin-bottom: 2rem;
+  }
+`;
