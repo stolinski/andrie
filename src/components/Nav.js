@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { lightBlue } from '../elements'
+import { lightBlue, above } from '../elements'
 
 const Links = [
   {
@@ -45,23 +45,26 @@ export default class Nav extends Component {
 }
 
 const Navigation = styled.nav`
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 50px;
-  margin-left: 100px;
-  a {
-    font-size: 0.8rem;
-    color: white;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    border-bottom: solid 4px transparent;
-    transition: 0.3s ease border;
-    &:hover,
-    &.active {
-      border-bottom: solid 4px ${lightBlue};
+  display: none;
+  ${above.med`
+    margin-left: 50px;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+    a {
+      font-size: 0.8rem;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: solid 4px transparent;
+      transition: 0.3s ease border;
+      &:hover,
+      &.active {
+        border-bottom: solid 4px ${lightBlue};
+      }
     }
-  }
+  `}
 `

@@ -2,6 +2,7 @@ import { applyStyleModifiers } from 'styled-components-modifiers'
 import styled from 'styled-components'
 import { darkBlue, blue, darkGrey, lightBlue } from './colors'
 import { sans } from '../utilities/Type'
+import { above } from './breakpoints'
 
 const MODIFIER_ZONE = {
   blank: () => `
@@ -13,19 +14,26 @@ const MODIFIER_ZONE = {
   `,
   hero: () => `
     padding-top: calc(130px + 10rem);
-    margin-top: -130px;
+    margin-top: -230px;
+    ${above.med`
+      margin-top: -130px;
+    `}
   `,
   right: () => `
-    .zone-content {
-      width: 60%;
-      margin-left: auto;
-    }
+    ${above.small`
+      .zone-content {
+        width: 60%;
+        margin-left: auto;
+      }
+    `}
   `,
   left: () => `
-    .zone-content {
-      width: 60%;
-      margin-right: auto;
-    }
+    ${above.small`
+      .zone-content {
+        width: 60%;
+        margin-right: auto;
+      }
+    `}
   `,
   short: () => `
     padding: 6rem 10%;

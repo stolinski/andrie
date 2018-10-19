@@ -7,6 +7,12 @@ const MODIFIER_ZONE = {
   dark: () => `
     border-color: ${blue};
     color: ${blue};
+    &:after {
+      background: ${blue};
+    }
+    &:hover {
+      color: white;
+    }
   `,
   center: () => `
     text-align: center;
@@ -18,6 +24,7 @@ export const Button = styled(Link)`
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
+  z-index: 1;
   padding: 10px 20px;
   border: solid 1px white;
   position: relative;
