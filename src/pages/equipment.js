@@ -1,14 +1,12 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
 import { Zone, BoxWrapper, Box, Button, Grid } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
-import greatLakes from '../images/Great-Lakes-blue.png'
 import barbara from '../images/barbara.jpg'
-import waves from '../images/SarahAndrie-makingwaves.jpg'
-import community from '../images/Andrie-biking-community.jpg'
 
 const EquipmentPage = () => (
   <Layout>
@@ -18,30 +16,30 @@ const EquipmentPage = () => (
           <h3>Tugboats</h3>
         </EquipHeading>
         <Grid>
-          <div>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
+          </EquipItem>
         </Grid>
       </Zone>
       <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
@@ -49,18 +47,18 @@ const EquipmentPage = () => (
           <h3>Barges</h3>
         </EquipHeading>
         <Grid>
-          <div>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
+          </EquipItem>
         </Grid>
       </Zone>
       <Zone modifiers={['solid', 'short']} image={hero}>
@@ -68,18 +66,18 @@ const EquipmentPage = () => (
           <h3>Jack-up Barges</h3>
         </EquipHeading>
         <Grid>
-          <div>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
+          </EquipItem>
         </Grid>
       </Zone>
       <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
@@ -87,18 +85,18 @@ const EquipmentPage = () => (
           <h3>Other Equipment</h3>
         </EquipHeading>
         <Grid>
-          <div>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
-          <div>
+          </EquipItem>
+          <EquipItem to={'/equipment/barbara'}>
             <img src={barbara} />
             <h6>Barbara Andrie</h6>
-          </div>
+          </EquipItem>
         </Grid>
       </Zone>
     </div>
@@ -113,4 +111,21 @@ const EquipHeading = styled.div`
     text-transform: uppercase;
   }
   margin-bottom: 2rem;
+`
+
+const EquipItem = styled(Link)`
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+  img {
+    transition: 0.3s ease all;
+  }
+  &:hover {
+    img {
+      transform: scale(1.2) translate3d(0, -10px, 0);
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3),
+        0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
 `

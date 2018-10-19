@@ -53,6 +53,7 @@ const Navigation = styled.nav`
     justify-content: space-between;
     width: 100%;
     margin-top: 50px;
+    max-width: 700px;
     a {
       font-size: 0.8rem;
       color: white;
@@ -61,10 +62,11 @@ const Navigation = styled.nav`
       font-weight: bold;
       border-bottom: solid 4px transparent;
       transition: 0.3s ease border;
+      padding-bottom: 10px;
       &:hover,
       &.active {
         border-bottom: solid 4px ${lightBlue};
       }
     }
-  `}
+  `};
 `

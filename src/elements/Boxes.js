@@ -20,20 +20,16 @@ const MODIFIER_ZONE = {
     `}
   `,
   right: () => `
-    ${above.small`
-      .zone-content {
-        width: 60%;
-        margin-left: auto;
-      }
-    `}
+    .zone-content {
+      width: 60%;
+      margin-left: auto;
+    }
   `,
   left: () => `
-    ${above.small`
-      .zone-content {
-        width: 60%;
-        margin-right: auto;
-      }
-    `}
+    .zone-content {
+      width: 60%;
+      margin-right: auto;
+    }
   `,
   short: () => `
     padding: 6rem 10%;
@@ -48,12 +44,19 @@ const MODIFIER_ZONE = {
   grey: () => `
     background: ${darkGrey};
     color: #333;
+    h3 {
+      color: ${darkBlue};
+    }
   `,
-  noOverlay:  () => `
+  white: () => `
+    background: white;
+    color: ${blue};
+  `,
+  noOverlay: () => `
     &:before {
       content: none;
     }
-  `
+  `,
 }
 
 export const Zone = styled.section`
@@ -62,6 +65,10 @@ export const Zone = styled.section`
   color: white;
   position: relative;
   h2 {
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+  h3 {
     text-transform: uppercase;
     font-size: 2rem;
   }
