@@ -2,17 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Zone, Button, FormBox, blue, SplitLayout } from '../elements'
-import { serif } from '../utilities';
+import { serif } from '../utilities'
 
-import hero from '../images/Home-HeroSpace.jpg'
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
-import linkedin from '../images/linkedin-circle.svg';
-import facebook from '../images/facebook-circle.svg';
+import linkedin from '../images/linkedin-circle.svg'
+import facebook from '../images/facebook-circle.svg'
 
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark', 'hero']} image={rebecca}>
+      <Zone modifiers={['right', 'dark']} hero={true} image={rebecca}>
         <div className="zone-content">
           <h2>Contact Andrie</h2>
           <p>
@@ -60,12 +59,12 @@ const IndexPage = () => (
         <h4>Learn more about Andrie and join our community online.</h4>
         <ContactSplit>
           <div>
-            <img src={linkedin} alt="LinkedIn Logo" style={{width:'80px'}}/>
+            <img src={linkedin} alt="LinkedIn Logo" style={{ width: '80px' }} />
             <h5>LinkedIn</h5>
             <p>Corporate connections, resumes, industry news</p>
-            </div>
-            <div>
-            <img src={facebook} alt="Facebook Logo" style={{width:'80px'}}/>
+          </div>
+          <div>
+            <img src={facebook} alt="Facebook Logo" style={{ width: '80px' }} />
             <h5>Facebook</h5>
             <p>Community sponsorships, latest happening and events</p>
           </div>
@@ -86,7 +85,7 @@ const ContactSplit = styled(SplitLayout)`
   h5 {
     font-size: 1.75rem;
   }
-`;
+`
 
 const ContacZone = styled(Zone)`
   h3 {
@@ -102,7 +101,7 @@ const ContacZone = styled(Zone)`
   p {
     margin-bottom: 0;
   }
-`;
+`
 
 const ContactForm = styled.form`
   label {

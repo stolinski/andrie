@@ -1,5 +1,5 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { darkBlue, blue, darkGrey, lightBlue } from './colors'
 import { sans } from '../utilities/Type'
 import { above } from './breakpoints'
@@ -11,13 +11,6 @@ const MODIFIER_ZONE = {
   `,
   center: () => `
     text-align: center;
-  `,
-  hero: () => `
-    padding-top: calc(130px + 10rem);
-    margin-top: -230px;
-    ${above.med`
-      margin-top: -130px;
-    `}
   `,
   right: () => `
     .zone-content {
@@ -108,6 +101,15 @@ export const Zone = styled.section`
     }
   }
   ${applyStyleModifiers(MODIFIER_ZONE)};
+  ${({ hero }) =>
+    hero &&
+    css`
+      padding-top: calc(130px + 10rem);
+      margin-top: -230px;
+      ${above.med`
+        margin-top: -130px;
+      `};
+    `};
 `
 
 export const Box = styled.div`

@@ -1,18 +1,13 @@
 import React from 'react'
-import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
-import { Zone, BoxWrapper, Box, Button } from '../elements'
+import { Zone, Button } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
-import greatLakes from '../images/Great-Lakes-blue.png'
-import barbara from '../images/barbara.jpg'
-import waves from '../images/SarahAndrie-makingwaves.jpg'
-import community from '../images/Andrie-biking-community.jpg'
 
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
+      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
         <div className="zone-content">
           <h2>Putting our people and the environment first</h2>
           <p>

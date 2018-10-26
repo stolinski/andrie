@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
-import { Zone, BoxWrapper, Box, Button, Grid } from '../elements'
+import { Zone, Grid } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 import barbara from '../images/barbara.jpg'
@@ -11,7 +10,7 @@ import barbara from '../images/barbara.jpg'
 const EquipmentPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['solid', 'hero']} image={hero}>
+      <Zone modifiers={['solid']} hero={true} image={hero}>
         <EquipHeading>
           <h3>Tugboats</h3>
         </EquipHeading>

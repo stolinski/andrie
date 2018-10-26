@@ -12,7 +12,7 @@ import community from '../images/Andrie-biking-community.jpg'
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
+      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
         <div className="zone-content">
           <h2>The Midwest’s Premiere Marine services company</h2>
           <p>
