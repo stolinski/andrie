@@ -31,7 +31,7 @@ const IndexPage = () => (
       </Zone>
       <Zone modifiers={['solid', 'center', 'short']}>
         <h3>Our Promise</h3>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           Andrie strives for efficiency and effectiveness. Our empowered
           employee teams strive to be the benchmark in safety and performance
           across the markets we serve. We value each other, we value our

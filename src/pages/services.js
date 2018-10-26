@@ -36,7 +36,7 @@ const IndexPage = () => (
       </BoxWrapper>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Sites & Job Locations</h3>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           With its corporate headquarters in Muskegon, Michigan, Andrie
           transportation routes cover a vast area throughout the Great Lakes and
           Seaway region, the Illinois and Mississippi river systems and beyond.

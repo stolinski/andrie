@@ -37,12 +37,12 @@ const IndexPage = () => (
       </Zone>
       <Zone modifiers={['dark', 'center', 'short']} image={bluewater}>
         <h3>First Choice</h3>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           Our mission at Andrie is to empower our employees to server in a safe,
           cost effective and environmentally sound manner. In order to achieve
           this we have made the promise to be the company of First Choice.
         </p>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           Andrie strives to be the company of First Choice for our employees,
           customers and our unique ecosystem that we operate within. We believe
           in achieving this we all leave the world in a better place for our
