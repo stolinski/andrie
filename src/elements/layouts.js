@@ -1,8 +1,11 @@
 import styled from 'styled-components'
+import { above } from './breakpoints'
 
 export const SplitLayout = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${above.med`
+    display: flex;
+    justify-content: space-between;
+  `};
 `
 
 export const Grid = styled.div`

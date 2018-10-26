@@ -6,7 +6,7 @@ import { Zone, BoxWrapper, Box, Button, Grid } from '../../elements'
 const EquipmentPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['solid', 'hero']}>
+      <Zone modifiers={['solid']} hero={true}>
         <EquipHeading>
           <h3>Tugboats</h3>
         </EquipHeading>

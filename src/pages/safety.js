@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { Zone, Button } from '../elements'
 
-import hero from '../images/Home-HeroSpace.jpg'
+import hero from '../images/safety.jpg'
 
 const IndexPage = () => (
   <Layout>
