@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
+import Slider from 'react-slick'
 import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
 import { Zone, BoxWrapper, Box, Button, SplitLayout, above } from '../elements'
@@ -10,6 +12,32 @@ import barbara from '../images/barbara.jpg'
 import waves from '../images/SarahAndrie-makingwaves.jpg'
 import community from '../images/Andrie-biking-community.jpg'
 import asphaltinstitute from '../images/asphaltinstitute.jpg'
+
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  arrows: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  centerMode: true,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+}
 
 const IndexPage = () => (
   <Layout>
@@ -38,7 +66,75 @@ const IndexPage = () => (
           <Button to="/services">Services & Site</Button>
         </div>
       </Zone>
-      <Zone modifiers={['blank', 'center', 'short']}>
+      <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
+        <div style={{ marginBottom: '2rem' }}>
+          <Slider {...settings}>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+            <EquipItem to={'/equipment/barbara'}>
+              <div>
+                <img src={barbara} />
+                <div className="text-overlay">
+                  <h6>Barbara Andrie</h6>
+                </div>
+              </div>
+            </EquipItem>
+          </Slider>
+        </div>
         <Button to="/equipment" modifiers={['dark']}>
           View All Equipment
         </Button>
@@ -103,6 +199,38 @@ const MembershipSplit = styled(SplitLayout)`
       text-align: left;
     }
   `};
+`
+
+const EquipItem = styled(Link)`
+  padding: 0 10px;
+  div {
+    position: relative;
+  }
+  .text-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(09, 24, 39, 0.81);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s ease all;
+  }
+  &:hover {
+    .text-overlay {
+      opacity: 1;
+    }
+  }
+  h6 {
+    color: white;
+    font-size: 20px;
+  }
+  img {
+    margin: 0;
+  }
 `
 
 export default IndexPage

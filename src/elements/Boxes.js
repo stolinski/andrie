@@ -66,7 +66,7 @@ export const Zone = styled.section`
     font-size: 2rem;
   }
   p {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   &:before {
     content: '';
@@ -109,6 +109,12 @@ export const Zone = styled.section`
       ${above.med`
         margin-top: -130px;
       `};
+    `};
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      padding-left: 0;
+      padding-right: 0;
     `};
 `
 
