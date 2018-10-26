@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Zone } from '../elements'
+import { Zone, darkBlue, Grid, Button } from '../elements'
 import { serif } from '../utilities'
 
 import hero from '../images/SarahAndrie-company-pg.jpg'
+import timeline from '../images/timeline.png'
 import bluewater from '../images/bluewater-background.jpg'
+import bike from '../images/biking-sponsorship-image.jpg'
 
 const IndexPage = () => (
   <Layout>
@@ -59,6 +61,28 @@ const IndexPage = () => (
           <li>Knowledge</li>
         </Values>
       </Zone>
+      <img src={timeline} />
+      <Zone modifiers={['solid', 'center', 'short', 'grey']}>
+        <h3 style={{ color: 'white' }}>Chief Officers</h3>
+        <Grid>
+          <Officers>
+            <h5>Stanley Andrie</h5>
+            <p>President and Chief Executive Officer</p>
+          </Officers>
+          <Officers>
+            <h5>John Andrie</h5>
+            <p>Vice President</p>
+          </Officers>
+          <Officers>
+            <h5>Michael Caliendo</h5>
+            <p>President - Transportation Group</p>
+          </Officers>
+          <Officers>
+            <h5>Jochen Haehner</h5>
+            <p>Chief Financial Officer</p>
+          </Officers>
+        </Grid>
+      </Zone>
       <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
         <div className="zone-content">
           <h2>Awards</h2>
@@ -100,21 +124,23 @@ const IndexPage = () => (
       <Zone modifiers={['solid', 'center', 'short', 'white']}>
         <h3>Memberships</h3>
       </Zone>
-      <Zone modifiers={['solid', 'center', 'short']}>
+      <Zone modifiers={['center']} image={bike}>
         <h3>Community Sponsorships</h3>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           Andrie supports many local and regional community organizations. Learn
           more about all of the groups that have strengthened by our involvement
           and ongoing commitment to their success.
         </p>
+        <Button to="/services">Learn More</Button>
       </Zone>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Work at Andrie</h3>
-        <p>
+        <p style={{ fontSize: '24px' }}>
           This is your opportunity to join the Midwest’s premier marine
           transportation company. Click the button below to see what current job
           openings we have. We look forward to sailing with you!
         </p>
+        <Button to="/services">Work At Andrie</Button>
       </Zone>
     </div>
   </Layout>
@@ -142,5 +168,17 @@ const Values = styled.ul`
         content: '';
       }
     }
+  }
+`
+
+const Officers = styled.div`
+  text-align: left;
+  h5 {
+    margin-bottom: 10px;
+    color: ${darkBlue};
+    font-size: 24px;
+  }
+  p {
+    ${serif()};
   }
 `
