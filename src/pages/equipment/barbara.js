@@ -46,6 +46,7 @@ export default EquipmentPage
 const EquipHeading = styled.div`
   padding: 2rem 5%;
   padding-top: 180px;
+  font-size: 14px;
   margin-top: -230px;
   ${above.med`
     margin-top: -130px;
@@ -59,7 +60,7 @@ const EquipHeading = styled.div`
 
 const EquipBody = styled.div`
   height: 70vh;
-  background: url(${({bg}) => bg});
+  background: ${blue} url(${({bg}) => bg});
   background-size: cover;
   padding: 2rem 5%;
 `
