@@ -7,7 +7,7 @@ import hero from '../images/safety.jpg'
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
+      <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
       <div className="zone-content">
         <h2>Safety First</h2>
         <p>We strongly believe that safety strengthens our organization and improves the quality of life for our employees and customers. Safety is our #1 priority. We want everyone to go home safe at the end of each day.</p>

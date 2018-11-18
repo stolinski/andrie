@@ -12,7 +12,7 @@ import bike from '../images/biking-sponsorship-image.jpg'
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
+      <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
         <div className="zone-content">
           <h2>About Andrie</h2>
           <p>

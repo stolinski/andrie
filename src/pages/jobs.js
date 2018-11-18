@@ -8,9 +8,9 @@ import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 import barbara from '../images/barbara.jpg'
 import ice from '../images/DSC_0266.jpg'
 
-const IndexPage = () => (
+const JobsPage = () => (
   <Layout>
-    <Zone modifiers={['right', 'dark', 'solid']} hero={true} image={hero}>
+    <Zone modifiers={['dark', 'solid']} hero={true} image={hero}>
       <JobsLayout>
         <JobsImageCol>
           <img src={ice} alt="" />
@@ -62,7 +62,7 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default JobsPage
 
 const JobsLayout = styled.div`
   display: flex;

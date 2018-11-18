@@ -8,7 +8,7 @@ import waves from '../images/SarahAndrie-makingwaves.jpg'
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
+      <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
         <div className="zone-content">
           <h2>Marine Transportation</h2>
           <p>

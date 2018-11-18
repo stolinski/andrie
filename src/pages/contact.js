@@ -11,7 +11,7 @@ import facebook from '../images/facebook-circle.svg'
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark']} hero={true} image={rebecca}>
+      <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
         <div className="zone-content">
           <h2>Contact Andrie</h2>
           <p>

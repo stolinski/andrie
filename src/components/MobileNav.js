@@ -32,43 +32,42 @@ const Links = [
 
 export default class Nav extends Component {
   render() {
+    const {toggle} = this.props;
     return (
       <Navigation>
+      <>
+      <NavButton onClick={toggle} style={{margin: "0 auto 1rem", display: "block"}}>
+        Close Menu
+      </NavButton>
         {Links.map(({ link, label }) => (
           <Link activeClassName="active" to={link}>
             {label}
           </Link>
         ))}
+      </>
       </Navigation>
     )
   }
 }
 
 const Navigation = styled.nav`
-  display: none;
-  ${above.med`
-    margin-left: 50px;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 50px;
-    max-width: 700px;
+    background: ${blue};
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem 5%;
+    z-index: 10;
     a {
-      font-size: 0.8rem;
-      color: white;
-      text-transform: uppercase;
-      text-decoration: none;
+      display: block;
       font-weight: bold;
-      border-bottom: solid 4px transparent;
-      transition: 0.3s ease border;
-      padding-bottom: 10px;
-      &:hover,
-      &.active {
-        border-bottom: solid 4px ${lightBlue};
-      }
+      font-size: 24px;
+      color: white;
+      margin-bottom: 2rem;
+      text-decoration: none;
     }
-  `};
 `
 const NavButton = styled.button`
     ${above.med`

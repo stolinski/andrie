@@ -12,18 +12,6 @@ const MODIFIER_ZONE = {
   center: () => `
     text-align: center;
   `,
-  right: () => `
-    .zone-content {
-      width: 60%;
-      margin-left: auto;
-    }
-  `,
-  left: () => `
-    .zone-content {
-      width: 60%;
-      margin-right: auto;
-    }
-  `,
   short: () => `
     padding: 6rem 10%;
   `,
@@ -115,6 +103,26 @@ export const Zone = styled.section`
     css`
       padding-left: 0;
       padding-right: 0;
+    `};
+  ${({ left }) =>
+    left &&
+    css`
+      ${above.med`
+        .zone-content {
+          width: 60%;
+          margin-right: auto;
+        }
+      `};
+    `};
+  ${({ right }) =>
+    right &&
+      css`
+      ${above.med`
+        .zone-content {
+          width: 60%;
+          margin-left: auto;
+        }
+      `};
     `};
 `
 

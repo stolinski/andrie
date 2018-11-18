@@ -42,7 +42,7 @@ const settings = {
 const IndexPage = () => (
   <Layout>
     <div>
-      <Zone modifiers={['right', 'dark']} hero={true} image={hero}>
+      <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
         <div className="zone-content">
           <h2>The Midwest’s Premiere Marine services company</h2>
           <p>
@@ -55,7 +55,7 @@ const IndexPage = () => (
           <Button to="/company">About Andrie</Button>
         </div>
       </Zone>
-      <Zone modifiers={['left', 'noOverlay']} image={greatLakes}>
+      <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
         <div className="zone-content">
           <h2>connecting the great lakes and beyond since 1988</h2>
           <p>
@@ -139,7 +139,7 @@ const IndexPage = () => (
           View All Equipment
         </Button>
       </Zone>
-      <Zone modifiers={['left']} image={barbara}>
+      <Zone left={true} image={barbara}>
         <div className="zone-content">
           <h2>putting our people and the environment first</h2>
           <p>
