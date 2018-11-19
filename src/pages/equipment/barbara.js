@@ -45,10 +45,11 @@ export default EquipmentPage
 
 const EquipHeading = styled.div`
   padding: 2rem 5%;
-  padding-top: 180px;
   font-size: 14px;
+  padding-top: 220px;
   margin-top: -230px;
   ${above.med`
+    padding-top: 180px;
     margin-top: -130px;
   `};
   a {
@@ -67,10 +68,12 @@ const EquipBody = styled.div`
 
 const EquipDetails = styled.div`
   background: rgba(0,0,0,0.7);
-  width: 400px;
-  margin-left: auto;
+  max-width: 400px;
   color: white;
   padding: 40px;
+  ${above.med`
+    margin-left: auto;
+  `}
   h1 {
     font-size: 24px;
     margin-bottom: 0;

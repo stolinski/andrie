@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Zone, darkBlue, Grid, Button } from '../elements'
+import { Zone, darkBlue, Grid, Button, above, LargeP } from '../elements'
 import { serif } from '../utilities'
 
 import hero from '../images/SarahAndrie-company-pg.jpg'
@@ -37,17 +37,17 @@ const IndexPage = () => (
       </Zone>
       <Zone modifiers={['dark', 'center', 'short']} image={bluewater}>
         <h3>First Choice</h3>
-        <p style={{ fontSize: '24px' }}>
+        <LargeP>
           Our mission at Andrie is to empower our employees to server in a safe,
           cost effective and environmentally sound manner. In order to achieve
           this we have made the promise to be the company of First Choice.
-        </p>
-        <p style={{ fontSize: '24px' }}>
+        </LargeP>
+        <LargeP>
           Andrie strives to be the company of First Choice for our employees,
           customers and our unique ecosystem that we operate within. We believe
           in achieving this we all leave the world in a better place for our
           future generations.
-        </p>
+        </LargeP>
       </Zone>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Values</h3>
@@ -126,20 +126,20 @@ const IndexPage = () => (
       </Zone>
       <Zone modifiers={['center']} image={bike}>
         <h3>Community Sponsorships</h3>
-        <p style={{ fontSize: '24px' }}>
+        <LargeP>
           Andrie supports many local and regional community organizations. Learn
           more about all of the groups that have strengthened by our involvement
           and ongoing commitment to their success.
-        </p>
+        </LargeP>
         <Button to="/services">Learn More</Button>
       </Zone>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Work at Andrie</h3>
-        <p style={{ fontSize: '24px' }}>
+        <LargeP>
           This is your opportunity to join the Midwest’s premier marine
           transportation company. Click the button below to see what current job
           openings we have. We look forward to sailing with you!
-        </p>
+        </LargeP>
         <Button to="/services">Work At Andrie</Button>
       </Zone>
     </div>

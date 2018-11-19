@@ -13,9 +13,18 @@ export const Grid = styled.div`
   flex-wrap: wrap;
   > * {
     margin-right: 2%;
-    width: 23%;
-    &:nth-child(4) {
+    width: 48%;
+    &:nth-child(2) {
       margin-right: 0;
     }
   }
+  ${above.med`
+    > * {
+      margin-right: 2%;
+      width: 23%;
+      &:nth-child(4) {
+        margin-right: 0;
+      }
+    }
+  `}
 `

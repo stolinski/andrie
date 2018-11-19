@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { Zone, BoxWrapper, Box } from '../elements'
+import { Zone, BoxWrapper, Box, LargeP } from '../elements'
 
 import hero from '../images/A410-fleet.jpg'
 import waves from '../images/SarahAndrie-makingwaves.jpg'
@@ -36,7 +36,7 @@ const IndexPage = () => (
       </BoxWrapper>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Sites & Job Locations</h3>
-        <p style={{ fontSize: '24px' }}>
+        <LargeP>
           With its corporate headquarters in Muskegon, Michigan, Andrie
           transportation routes cover a vast area throughout the Great Lakes and
           Seaway region, the Illinois and Mississippi river systems and beyond.
@@ -44,7 +44,7 @@ const IndexPage = () => (
           our marine transportation success ranks Andrie as the industry leader.
           To learn more about Andrie’s transportation services, we invite you to
           cruise around the map. Enjoy your trip.
-        </p>
+        </LargeP>
       </Zone>
     </div>
   </Layout>

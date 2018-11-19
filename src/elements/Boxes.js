@@ -2,7 +2,7 @@ import { applyStyleModifiers } from 'styled-components-modifiers'
 import styled, { css } from 'styled-components'
 import { darkBlue, blue, darkGrey, lightBlue } from './colors'
 import { sans } from '../utilities/Type'
-import { above } from './breakpoints'
+import { above, below } from './breakpoints'
 
 const MODIFIER_ZONE = {
   blank: () => `
@@ -128,11 +128,21 @@ export const Zone = styled.section`
 
 export const Box = styled.div`
   padding: 7%;
-  width: 50%;
   text-align: center;
   color: white;
   position: relative;
   display: flex;
+  ${below.med`
+    &:first-child {
+      margin-bottom:10px;
+    }
+  `}
+  ${above.med`
+    width: 50%;
+    &:last-child {
+      margin-left: 10px;
+    }
+  `}
   .box-inner {
     border: solid 1px white;
     width: 100%;
@@ -147,9 +157,6 @@ export const Box = styled.div`
     .box-inner {
       transform: scale(1.1);
     }
-  }
-  &:last-child {
-    margin-left: 10px;
   }
   &:before {
     content: '';
@@ -186,14 +193,20 @@ export const Box = styled.div`
 `
 
 export const BoxWrapper = styled.section`
-  display: flex;
   margin-bottom: 10px;
+  ${above.med`
+    display: flex;
+  `}
 `
+
 
 export const FormBox = styled.section`
   background: ${darkGrey};
-  padding: 5rem 25%;
+  padding: 5rem 2%;
   text-align: center;
+  ${above.med`
+    padding: 5rem 25%;
+  `}
   h3 {
     color: white;
     text-transform: uppercase;
