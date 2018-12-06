@@ -31,12 +31,12 @@ const IndexPage = () => (
           </p>
         </div>
       </Zone>
-      <BoxWrapper>
+      {/* <BoxWrapper>
         <Box image={waves} />
         <div className="box-inner">
           <h4>Additional Services</h4>
         </div>
-      </BoxWrapper>
+      </BoxWrapper> */}
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Sites & Job Locations</h3>
         <LargeP>

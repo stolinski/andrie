@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Map = () => (
+  <MapWrap>
   <MapSvg width="669" height="462" viewBox="0 0 669 462" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Andrie-locations-map-forScott">
 <g id="map">
@@ -1921,12 +1922,18 @@ const Map = () => (
 </g>
 </g>
 </MapSvg>
+</MapWrap>
 )
 
 
+const MapWrap = styled.div`
+  overflow: hidden;
+  overflow-x: scroll;
+`; 
+
 const MapSvg = styled.svg`
   margin: 0;
-  width: 100%;
+  min-width: 2000px;
   height: auto;
   .container .dot {
     ~ g, ~ path {

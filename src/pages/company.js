@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
+import Everest from '../components/Everest'
 import { Zone, darkBlue, Grid, Button, above, LargeP } from '../elements'
 import { serif } from '../utilities'
 
@@ -61,7 +62,7 @@ const IndexPage = () => (
           <li>Knowledge</li>
         </Values>
       </Zone>
-      <img src={timeline} />
+      <Everest />
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3 style={{ color: 'white' }}>Chief Officers</h3>
         <Grid>
