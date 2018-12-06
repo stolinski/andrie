@@ -51,18 +51,36 @@ export default class Everest extends Component {
       })
     }
   }
+  setActive
 
   render() {
     const { active } = this.state
     return (
       <TimelineZone>
         <TimelineH>Andrie History</TimelineH>
-        <Track>
-          <TrackButtons>
-            <TrackButton onClick={this.prev}>{left}</TrackButton>
-            <TrackButton onClick={this.next}>{right}</TrackButton>
-          </TrackButtons>
-        </Track>
+        <TrackWrapper>
+          <Track>
+            <TrackLineContainer>
+              <TrackLine />
+              <TrackDots>
+                {data.map((item, index) => (
+                  <TrackDot
+                    onClick={() =>
+                      this.setState({
+                        active: index,
+                      })
+                    }
+                    key={index}
+                  />
+                ))}
+              </TrackDots>
+            </TrackLineContainer>
+            <TrackButtons>
+              <TrackButton onClick={this.prev}>{left}</TrackButton>
+              <TrackButton onClick={this.next}>{right}</TrackButton>
+            </TrackButtons>
+          </Track>
+        </TrackWrapper>
         <SlideContainer>
           <SlideTrack
             style={{
@@ -94,14 +112,47 @@ const TimelineZone = styled.section`
   margin-bottom: 10px;
 `
 
-const Track = styled.div`
+const TrackWrapper = styled.div`
   padding: 0 6%;
-  margin: 3rem 0;
+  margin: 7rem 0 5rem;
+`
+
+const Track = styled.div`
+  position: relative;
+`
+const TrackLineContainer = styled.div`
+  position: relative;
+`
+
+const TrackDots = styled.div`
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: -11px;
+  width: 100%;
+`
+const TrackDot = styled.div`
+  height: 24px;
+  width: 24px;
+  background: ${brightBlue};
+  border-radius: 50%;
+  margin: 0 15%;
+  flex-grow: 0;
+  flex-shrink: 0;
+`
+
+const TrackLine = styled.div`
+  height: 2px;
+  background: #9f9f9f;
 `
 
 const TrackButtons = styled.div`
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  left: 0;
+  top: -14px;
+  width: 100%;
 `
 
 const TimelineH = styled.h3`
