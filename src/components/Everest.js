@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { brightBlue, darkBlue } from '../elements'
+import { brightBlue, blue } from '../elements'
 import { serif } from '../utilities'
 
 import barbara from '../images/barbara.jpg'
@@ -8,13 +8,24 @@ import barbara from '../images/barbara.jpg'
 const data = [
   {
     year: '1988',
-    heading: 'Yo ho ho and a bottle of rum',
-    body: 'some paragraph text for fun',
+    heading:
+      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
+    body:
+      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
   },
   {
-    year: '1980',
-    heading: 'Yo ho ho and a bottle of rum',
-    body: 'some paragraph text for fun',
+    year: '1989',
+    heading:
+      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
+    body:
+      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
+  },
+  {
+    year: '1990',
+    heading:
+      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
+    body:
+      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
   },
 ]
 
@@ -119,18 +130,24 @@ const Slide = styled.div`
   width: 100vw;
   padding: 0 3%;
   .img {
-    width: 30%;
-    margin-right: 20px;
+    width: 40%;
+    margin-right: 30px;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
   h3 {
     font-size: 32px;
-    color: ${darkBlue};
+    color: ${blue};
   }
   h4 {
-    font-size: 24px / 36px;
+    font-size: 24px;
+    line-height: 1.5;
+    text-transform: none;
+    ${serif()};
   }
   p {
-    font-size: 16px / 26px;
+    font-size: 16px;
+    line-height: 1.625;
     ${serif()};
   }
 `
