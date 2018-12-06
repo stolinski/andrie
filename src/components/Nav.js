@@ -35,7 +35,7 @@ export default class Nav extends Component {
     return (
       <Navigation>
         {Links.map(({ link, label }) => (
-          <Link activeClassName="active" to={link}>
+          <Link activeClassName="active" to={link} key={link}>
             {label}
           </Link>
         ))}
@@ -71,7 +71,7 @@ const Navigation = styled.nav`
   `};
 `
 const NavButton = styled.button`
-    ${above.med`
+  ${above.med`
       display: none;
-    `}
-`;
+    `};
+`

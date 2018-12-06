@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
 import { darkBlue, lightBlue } from '../elements'
 import { sans } from '../utilities'
 
@@ -11,11 +11,9 @@ export default class Footer extends Component {
     return (
       <FooterContainer>
         <FooterNav>
-          <a href="#">Current Job Openings</a>
-          <a href="#">About Andrie</a>
-          <a href="#">Contact</a>
-          <a href="#">Linkedin</a>
-          <a href="#">For Employees</a>
+          <Link to="/jobs">Current Job Openings</Link>
+          <Link to="/company">About Andrie</Link>
+          <Link to="/contact">Contact</Link>
         </FooterNav>
         <Link
           to="/"

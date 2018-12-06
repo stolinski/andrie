@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import Newsletter from '../components/Newsletter'
@@ -40,145 +40,160 @@ const settings = {
 }
 
 const IndexPage = () => (
-  <Layout>
-    <div>
-      <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
-        <div className="zone-content">
-          <h2>The Midwest’s Premiere Marine services company</h2>
-          <p>
-            From the Great Lakes to the Illinois and Mississippi river systems,
-            Andrie is the Midwest’s premiere marine transportation and service
-            company. Founded in 1988, we provide a wide range of award-winning
-            services to a broad range of customers – from local, national, and
-            global corporations to small and medium-sized companies alike.
-          </p>
-          <Button to="/company">About Andrie</Button>
+  <StaticQuery
+    query={graphql`
+      query {
+        wordpressPage(slug: { eq: "home" }) {
+          slug
+          acf {
+            zones_page {
+              heading
+              paragraph
+            }
+          }
+        }
+      }
+    `}
+    render={({ wordpressPage }) => (
+      <Layout>
+        <div>
+          <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
+            <div className="zone-content">
+              <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.acf.zones_page[0].paragraph,
+                }}
+              />
+              <Button to="/company">About Andrie</Button>
+            </div>
+          </Zone>
+          <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
+            <div className="zone-content">
+              <h2>{wordpressPage.acf.zones_page[1].heading}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.acf.zones_page[1].paragraph,
+                }}
+              />
+              <Button to="/services">Services & Site</Button>
+            </div>
+          </Zone>
+          <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
+            <div style={{ marginBottom: '2rem' }}>
+              <Slider {...settings}>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+                <EquipItem to={'/equipment/barbara'}>
+                  <div>
+                    <img src={barbara} />
+                    <div className="text-overlay">
+                      <h6>Barbara Andrie</h6>
+                    </div>
+                  </div>
+                </EquipItem>
+              </Slider>
+            </div>
+            <Button to="/equipment" modifiers={['dark']}>
+              View All Equipment
+            </Button>
+          </Zone>
+          <Zone left={true} image={barbara}>
+            <div className="zone-content">
+              <h2>{wordpressPage.acf.zones_page[2].heading}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.acf.zones_page[2].paragraph,
+                }}
+              />
+              <Button to="/safety">Saftey First</Button>
+            </div>
+          </Zone>
+          <BoxWrapper>
+            <Box image={waves}>
+              <div className="box-inner">
+                <h4>andrie making waves</h4>
+                <p>New & Seaworthy</p>
+              </div>
+            </Box>
+            <Box image={community}>
+              <div className="box-inner">
+                <h4>In the community</h4>
+                <p>New & Seaworthy</p>
+              </div>
+            </Box>
+          </BoxWrapper>
+          <Newsletter />
+          <Zone modifiers={['blank', 'center', 'short']}>
+            <MembershipSplit>
+              <div>
+                <img src={asphaltinstitute} />
+              </div>
+              <div>
+                <h4>Featured Membership</h4>
+                <h5>Asphalt Institute</h5>
+                <p>Additional text about affiliation Board Member Associated</p>
+              </div>
+            </MembershipSplit>
+          </Zone>
         </div>
-      </Zone>
-      <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
-        <div className="zone-content">
-          <h2>connecting the great lakes and beyond since 1988</h2>
-          <p>
-            From our headquarters in Muskegon, Michigan, Andrie serves a diverse
-            marine customer base by executing Great Lakes projects and ventures
-            from the Atlantic to the Pacific, from Canada to the Gulf of Mexico.
-          </p>
-          <Button to="/services">Services & Site</Button>
-        </div>
-      </Zone>
-      <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
-        <div style={{ marginBottom: '2rem' }}>
-          <Slider {...settings}>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-            <EquipItem to={'/equipment/barbara'}>
-              <div>
-                <img src={barbara} />
-                <div className="text-overlay">
-                  <h6>Barbara Andrie</h6>
-                </div>
-              </div>
-            </EquipItem>
-          </Slider>
-        </div>
-        <Button to="/equipment" modifiers={['dark']}>
-          View All Equipment
-        </Button>
-      </Zone>
-      <Zone left={true} image={barbara}>
-        <div className="zone-content">
-          <h2>putting our people and the environment first</h2>
-          <p>
-            From our headquarters in Muskegon, Michigan, Andrie serves a diverse
-            marine customer base by executing Great Lakes projects and ventures
-            from the Atlantic to the Pacific, from Canada to the Gulf of Mexico.
-          </p>
-          <Button to="/safety">Saftey First</Button>
-        </div>
-      </Zone>
-      <BoxWrapper>
-        <Box image={waves}>
-          <div className="box-inner">
-            <h4>andrie making waves</h4>
-            <p>New & Seaworthy</p>
-          </div>
-        </Box>
-        <Box image={community}>
-          <div className="box-inner">
-            <h4>In the community</h4>
-            <p>New & Seaworthy</p>
-          </div>
-        </Box>
-      </BoxWrapper>
-      <Newsletter />
-      <Zone modifiers={['blank', 'center', 'short']}>
-        <MembershipSplit>
-          <div>
-            <img src={asphaltinstitute} />
-          </div>
-          <div>
-            <h4>Featured Membership</h4>
-            <h5>Asphalt Institute</h5>
-            <p>Additional text about affiliation Board Member Associated</p>
-          </div>
-        </MembershipSplit>
-      </Zone>
-    </div>
-  </Layout>
+      </Layout>
+    )}
+  />
 )
 
 const MembershipSplit = styled(SplitLayout)`

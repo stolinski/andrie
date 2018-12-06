@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import { Zone } from '../elements'
 
@@ -9,57 +10,37 @@ import barbara from '../images/barbara.jpg'
 import ice from '../images/DSC_0266.jpg'
 
 const JobsPage = () => (
-  <Layout>
-    <Zone modifiers={['dark', 'solid']} hero={true} image={hero}>
-      <JobsLayout>
-        <JobsImageCol>
-          <img src={ice} alt="" />
-          <img src={barbara} alt="" />
-          <img src={rebecca} alt="" />
-        </JobsImageCol>
-        <div>
-          <h2>Current Openings Page</h2>
-
-          <p>
-            This content will change as job openings change. Will need to
-            determined what is here by default and/or on launch. Here is current
-            text that could be refined and reused.
-          </p>
-
-          <p>
-            We welcome you to Andrie’s Career Portal and thank you for visiting
-            our website. This is your opportunity to join the Midwest’s premiere
-            marine transportation company.
-          </p>
-
-          <p>Andrie does not currently have any open positions.</p>
-          <ul>
-            <li>Excellent Pay</li>
-            <li>Bonus Program</li>
-            <li>Travel Subsidy Program</li>
-            <li>Medical, Dental, and Vision Benefits</li>
-            <li>Safety Incentives</li>
-            <li>Profit Sharing</li>
-            <li>401k Plan</li>
-            <li>Educational Assistance</li>
-            <li>Life Insurance</li>
-            <li>Long Term Disability</li>
-            <li>
-              Opportunities for advancement with a leading Great Lakes company
-            </li>
-          </ul>
-          <p>A career at Andrie provides the following compensations.</p>
-          <p>
-            To apply, please email copies of your TWIC, Passport, Driver's
-            License, MMC, and a current resume to: careers@andrie.com. If your
-            credentials meet the requirements for a current vacancy we will
-            contact you with an application.
-          </p>
-          <p>We look forward to sailing with you!</p>
-        </div>
-      </JobsLayout>
-    </Zone>
-  </Layout>
+  <StaticQuery
+    query={graphql`
+      query {
+        wordpressPage(slug: { eq: "jobs" }) {
+          content
+          title
+        }
+      }
+    `}
+    render={({ wordpressPage }) => (
+      <Layout>
+        <Zone modifiers={['dark', 'solid']} hero={true} image={hero}>
+          <JobsLayout>
+            <JobsImageCol>
+              <img src={ice} alt="" />
+              <img src={barbara} alt="" />
+              <img src={rebecca} alt="" />
+            </JobsImageCol>
+            <div>
+              <h2>{wordpressPage.title}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.content,
+                }}
+              />
+            </div>
+          </JobsLayout>
+        </Zone>
+      </Layout>
+    )}
+  />
 )
 
 export default JobsPage

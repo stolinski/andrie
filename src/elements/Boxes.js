@@ -116,13 +116,23 @@ export const Zone = styled.section`
     `};
   ${({ right }) =>
     right &&
-      css`
+    css`
       ${above.med`
         .zone-content {
           width: 60%;
           margin-left: auto;
         }
       `};
+    `};
+  ${({ largep }) =>
+    largep &&
+    css`
+      p {
+        font-size: 16px;
+        ${above.med`
+          font-size: 24px;
+        `};
+      }
     `};
 `
 
@@ -136,8 +146,7 @@ export const Box = styled.div`
     &:first-child {
       margin-bottom:10px;
     }
-  `}
-  ${above.med`
+  `} ${above.med`
     width: 50%;
     &:last-child {
       margin-left: 10px;
@@ -196,9 +205,8 @@ export const BoxWrapper = styled.section`
   margin-bottom: 10px;
   ${above.med`
     display: flex;
-  `}
+  `};
 `
-
 
 export const FormBox = styled.section`
   background: ${darkGrey};
@@ -206,8 +214,7 @@ export const FormBox = styled.section`
   text-align: center;
   ${above.med`
     padding: 5rem 25%;
-  `}
-  h3 {
+  `} h3 {
     color: white;
     text-transform: uppercase;
     font-size: 2rem;
