@@ -8,7 +8,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        baseUrl: 'box5733.temp.domains/~andrieap',
+        baseUrl: 'andrieapi.com',
         // The protocol. This can be http or https.
         protocol: 'http',
         // Indicates whether the site is hosted on wordpress.com.

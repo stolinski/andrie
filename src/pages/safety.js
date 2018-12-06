@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
-import { Zone, Button, LargeP } from '../elements'
+import { Zone, Button } from '../elements'
 
 import hero from '../images/safety.jpg'
 

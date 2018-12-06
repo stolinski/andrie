@@ -1,9 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
+import Map from '../components/Map'
 import { Zone, BoxWrapper, Box, LargeP } from '../elements'
 
 import hero from '../images/A410-fleet.jpg'
 import waves from '../images/SarahAndrie-makingwaves.jpg'
+import locations from '../images/locations.svg'
 
 const IndexPage = () => (
   <Layout>
@@ -46,8 +49,9 @@ const IndexPage = () => (
           cruise around the map. Enjoy your trip.
         </LargeP>
       </Zone>
+      <Map />
     </div>
   </Layout>
 )
 
-export default IndexPage
+export default IndexPage;
