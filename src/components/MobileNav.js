@@ -14,7 +14,7 @@ const Links = [
   },
   {
     link: 'services',
-    label: 'services & sites',
+    label: 'Services & Sites',
   },
   {
     link: 'equipment',

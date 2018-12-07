@@ -76,7 +76,7 @@ const IndexPage = () => (
                   __html: wordpressPage.acf.zones_page[1].paragraph,
                 }}
               />
-              <Button to="/services">Services & Site</Button>
+              <Button to="/services">Services & Sites</Button>
             </div>
           </Zone>
           <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
@@ -160,7 +160,7 @@ const IndexPage = () => (
                   __html: wordpressPage.acf.zones_page[2].paragraph,
                 }}
               />
-              <Button to="/safety">Saftey First</Button>
+              <Button to="/safety">Safety First</Button>
             </div>
           </Zone>
           <BoxWrapper>

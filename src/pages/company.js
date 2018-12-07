@@ -93,11 +93,24 @@ const IndexPage = () => (
     `}
     render={({ allWordpressWpOfficer }) => (
         <Grid>
-        {allWordpressWpOfficer.edges.map(edge => (
+        {allWordpressWpOfficer.edges.map(({node}) => (
           <Officers>
-            <Img resolutions={edge.node.featured_media.localFile.childImageSharp.resolutions} />
-            <h5>{edge.node.title}</h5>
-            <p>{edge.node.acf.title}</p>
+            <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
+            <h5>{node.title}</h5>
+            <p>{node.acf.title}</p>
+            <div className="window">
+              <div  className="left">
+              <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
+            <h5>{node.title}</h5>
+            <p>{node.acf.title}</p>
+            </div>
+            <div
+                dangerouslySetInnerHTML={{
+                  __html: node.content,
+                }}
+              />
+
+            </div>
           </Officers>
         ))}
         </Grid>
@@ -160,7 +173,7 @@ const IndexPage = () => (
           transportation company. Click the button below to see what current job
           openings we have. We look forward to sailing with you!
         </LargeP>
-        <Button to="/services">Work At Andrie</Button>
+        <Button to="/jobs">Work At Andrie</Button>
       </Zone>
     </div>
   </Layout>
@@ -193,6 +206,7 @@ const Values = styled.ul`
 
 const Officers = styled.div`
   text-align: left;
+  position: relative;
   h5 {
     margin: 10px 0;
     color: white;
@@ -200,5 +214,39 @@ const Officers = styled.div`
   }
   p {
     ${serif()};
+  }
+  .window {
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: 0.3s ease all;
+    position: absolute;
+    top: -20px;
+    width: 70vw; 
+    left: -20px;
+    padding: 20px;
+    background: ${darkBlue};
+    display: flex;
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
+    .left {
+      margin-right: 20px;
+    }
+  }
+  &:hover {
+    .window {
+      opacity: 1;
+    }
+  }
+  &:nth-child(3), &:nth-child(4) {
+    .window {
+      flex-direction: row-reverse;
+      left: auto;
+      right: -20px;
+      .left {
+        margin-left: 20px;
+      }
+    }
   }
 `
