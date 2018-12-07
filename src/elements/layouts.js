@@ -22,6 +22,9 @@ export const Grid = styled.div`
     > * {
       margin-right: 2%;
       width: 23%;
+      &:nth-child(2) {
+        margin-right: 2%;
+      }
       &:nth-child(4) {
         margin-right: 0;
       }

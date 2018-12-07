@@ -1,5 +1,7 @@
 import React from 'react'
+import Img from "gatsby-image"
 import styled from 'styled-components'
+import { Link, StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
 import { Zone, darkBlue, Grid, Button, above, LargeP } from '../elements'
@@ -63,26 +65,43 @@ const IndexPage = () => (
         </Values>
       </Zone>
       <Everest />
-      <Zone modifiers={['solid', 'center', 'short', 'grey']}>
+      <Zone modifiers={['solid', 'center', 'short', 'pale']}>
         <h3 style={{ color: 'white' }}>Chief Officers</h3>
+        <StaticQuery
+    query={graphql`
+      query {
+        allWordpressWpOfficer {
+          edges {
+            node {
+              title
+              featured_media {
+          localFile {
+            childImageSharp {
+              resolutions(width: 200) {
+                    ...GatsbyImageSharpResolutions_withWebp_tracedSVG
+                }
+          }
+    		}}
+              content
+              acf {
+                title
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={({ allWordpressWpOfficer }) => (
         <Grid>
+        {allWordpressWpOfficer.edges.map(edge => (
           <Officers>
-            <h5>Stanley Andrie</h5>
-            <p>President and Chief Executive Officer</p>
+            <Img resolutions={edge.node.featured_media.localFile.childImageSharp.resolutions} />
+            <h5>{edge.node.title}</h5>
+            <p>{edge.node.acf.title}</p>
           </Officers>
-          <Officers>
-            <h5>John Andrie</h5>
-            <p>Vice President</p>
-          </Officers>
-          <Officers>
-            <h5>Michael Caliendo</h5>
-            <p>President - Transportation Group</p>
-          </Officers>
-          <Officers>
-            <h5>Jochen Haehner</h5>
-            <p>Chief Financial Officer</p>
-          </Officers>
+        ))}
         </Grid>
+    )}/>
       </Zone>
       <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
         <div className="zone-content">
@@ -175,8 +194,8 @@ const Values = styled.ul`
 const Officers = styled.div`
   text-align: left;
   h5 {
-    margin-bottom: 10px;
-    color: ${darkBlue};
+    margin: 10px 0;
+    color: white;
     font-size: 24px;
   }
   p {
