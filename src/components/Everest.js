@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { brightBlue, blue } from '../elements'
 import { serif } from '../utilities'
 
@@ -51,7 +51,6 @@ export default class Everest extends Component {
       })
     }
   }
-  setActive
 
   render() {
     const { active } = this.state
@@ -64,14 +63,19 @@ export default class Everest extends Component {
               <TrackLine />
               <TrackDots>
                 {data.map((item, index) => (
-                  <TrackDot
-                    onClick={() =>
-                      this.setState({
-                        active: index,
-                      })
-                    }
-                    key={index}
-                  />
+                  <TrackDotWrapper>
+                    <TrackDotsYear active={active === index}>
+                      {item.year}
+                    </TrackDotsYear>
+                    <TrackDot
+                      onClick={() =>
+                        this.setState({
+                          active: index,
+                        })
+                      }
+                      key={index}
+                    />
+                  </TrackDotWrapper>
                 ))}
               </TrackDots>
             </TrackLineContainer>
@@ -130,15 +134,51 @@ const TrackDots = styled.div`
   left: 0;
   top: -11px;
   width: 100%;
+  z-index: 20;
+  position: relative;
 `
+
+const TrackDotsYear = styled.div`
+  background: ${brightBlue};
+  color: white;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 40px;
+  font-weight: bold;
+  opacity: 0;
+  transition: 0.3s ease all;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: ${brightBlue};
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -1;
+  }
+  ${({ active }) =>
+    active &&
+    css`
+      opacity: 1;
+    `}
+`
+
+const TrackDotWrapper = styled.div`
+  margin: 0 15%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+`
+
 const TrackDot = styled.div`
   height: 24px;
   width: 24px;
   background: ${brightBlue};
   border-radius: 50%;
-  margin: 0 15%;
-  flex-grow: 0;
-  flex-shrink: 0;
 `
 
 const TrackLine = styled.div`
@@ -153,6 +193,7 @@ const TrackButtons = styled.div`
   left: 0;
   top: -14px;
   width: 100%;
+  z-index: 20;
 `
 
 const TimelineH = styled.h3`
