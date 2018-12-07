@@ -27,6 +27,13 @@ const data = [
     body:
       'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
   },
+  {
+    year: '1993',
+    heading:
+      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
+    body:
+      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
+  },
 ]
 
 export default class Everest extends Component {
@@ -118,7 +125,7 @@ const TimelineZone = styled.section`
 
 const TrackWrapper = styled.div`
   padding: 0 6%;
-  margin: 7rem 0 5rem;
+  margin: 4rem 0 5rem;
 `
 
 const Track = styled.div`
@@ -126,6 +133,8 @@ const Track = styled.div`
 `
 const TrackLineContainer = styled.div`
   position: relative;
+  overflow-x: hidden;
+  padding-top: 70px;
 `
 
 const TrackDots = styled.div`
@@ -136,6 +145,7 @@ const TrackDots = styled.div`
   width: 100%;
   z-index: 20;
   position: relative;
+  transition: 0.3s ease all;
 `
 
 const TrackDotsYear = styled.div`
@@ -191,9 +201,10 @@ const TrackButtons = styled.div`
   justify-content: space-between;
   position: absolute;
   left: 0;
-  top: -14px;
+  bottom: 12px;
   width: 100%;
   z-index: 20;
+  pointer-events: none;
 `
 
 const TimelineH = styled.h3`
@@ -215,6 +226,7 @@ const TrackButton = styled.button`
   height: 30px;
   display: flex;
   border: none;
+  pointer-events: all;
   background: ${brightBlue};
 `
 const Slide = styled.div`
