@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { blue, above } from '../elements'
 
@@ -10,6 +11,11 @@ const EquipmentPage = ({ data: { wordpressWpEquipment } }) => (
       <Link to="/equipment">&laquo; Back to main list</Link>
     </EquipHeading>
     <EquipBody>
+      <Img
+        fluid={
+          wordpressWpEquipment.featured_media.localFile.childImageSharp.fluid
+        }
+      />
       <EquipDetails>
         <h1>{wordpressWpEquipment.title}</h1>
         <p>{wordpressWpEquipment.acf.subheading}</p>
@@ -58,18 +64,21 @@ const EquipHeading = styled.div`
 `
 
 const EquipBody = styled.div`
-  height: 70vh;
   background: ${blue} url(${({ bg }) => bg});
-  background-size: cover;
-  padding: 2rem 5%;
+  .gatsby-image-wrapper {
+    width: 100%;
+  }
+  ${above.med`
+    display: flex;
+  `}
 `
 
 const EquipDetails = styled.div`
   background: rgba(0, 0, 0, 0.7);
-  max-width: 400px;
   color: white;
   padding: 40px;
   ${above.med`
+    max-width: 400px;
     margin-left: auto;
   `}
   h1 {

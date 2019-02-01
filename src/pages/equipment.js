@@ -4,9 +4,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { Zone, Grid } from '../elements'
-
 import hero from '../images/Home-HeroSpace.jpg'
-import barbara from '../images/barbara.jpg'
 
 const EquipmentPage = () => (
   <Layout>
