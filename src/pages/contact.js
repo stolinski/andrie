@@ -58,16 +58,24 @@ const IndexPage = () => (
         <h3>Connect</h3>
         <h4>Learn more about Andrie and join our community online.</h4>
         <ContactSplit>
-          <div>
+          <a
+            href="https://www.linkedin.com/company/andrie-inc./"
+            rel="nofollow"
+            target="_blank"
+          >
             <img src={linkedin} alt="LinkedIn Logo" style={{ width: '80px' }} />
             <h5>LinkedIn</h5>
             <p>Corporate connections, resumes, industry news</p>
-          </div>
-          <div>
+          </a>
+          <a
+            href="https://www.facebook.com/pages/Andrie-Inc/161039470584729"
+            rel="nofollow"
+            target="_blank"
+          >
             <img src={facebook} alt="Facebook Logo" style={{ width: '80px' }} />
             <h5>Facebook</h5>
             <p>Community sponsorships, latest happening and events</p>
-          </div>
+          </a>
         </ContactSplit>
       </ContacZone>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import Img from "gatsby-image"
+import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { Link, StaticQuery } from 'gatsby'
+import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
-import { Zone, darkBlue, Grid, Button, above, LargeP } from '../elements'
+import { Zone, darkBlue, Grid, Button, LargeP } from '../elements'
 import { serif } from '../utilities'
 
 import hero from '../images/SarahAndrie-company-pg.jpg'
@@ -68,53 +68,63 @@ const IndexPage = () => (
       <Zone modifiers={['solid', 'center', 'short', 'pale']}>
         <h3 style={{ color: 'white' }}>Chief Officers</h3>
         <StaticQuery
-    query={graphql`
-      query {
-        allWordpressWpOfficer {
-          edges {
-            node {
-              title
-              featured_media {
-          localFile {
-            childImageSharp {
-              resolutions(width: 200) {
-                    ...GatsbyImageSharpResolutions_withWebp_tracedSVG
+          query={graphql`
+            query {
+              allWordpressWpOfficer {
+                edges {
+                  node {
+                    title
+                    featured_media {
+                      localFile {
+                        childImageSharp {
+                          resolutions(width: 200) {
+                            ...GatsbyImageSharpResolutions_withWebp_tracedSVG
+                          }
+                        }
+                      }
+                    }
+                    content
+                    acf {
+                      title
+                    }
+                  }
                 }
-          }
-    		}}
-              content
-              acf {
-                title
               }
             }
-          }
-        }
-      }
-    `}
-    render={({ allWordpressWpOfficer }) => (
-        <Grid>
-        {allWordpressWpOfficer.edges.map(({node}) => (
-          <Officers>
-            <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
-            <h5>{node.title}</h5>
-            <p>{node.acf.title}</p>
-            <div className="window">
-              <div  className="left">
-              <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
-            <h5>{node.title}</h5>
-            <p>{node.acf.title}</p>
-            </div>
-            <div
-                dangerouslySetInnerHTML={{
-                  __html: node.content,
-                }}
-              />
-
-            </div>
-          </Officers>
-        ))}
-        </Grid>
-    )}/>
+          `}
+          render={({ allWordpressWpOfficer }) => (
+            <Grid>
+              {allWordpressWpOfficer.edges.map(({ node }) => (
+                <Officers>
+                  <Img
+                    resolutions={
+                      node.featured_media.localFile.childImageSharp.resolutions
+                    }
+                  />
+                  <h5>{node.title}</h5>
+                  <p>{node.acf.title}</p>
+                  <div className="window">
+                    <div className="left">
+                      <Img
+                        resolutions={
+                          node.featured_media.localFile.childImageSharp
+                            .resolutions
+                        }
+                      />
+                      <h5>{node.title}</h5>
+                      <p>{node.acf.title}</p>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: node.content,
+                      }}
+                    />
+                  </div>
+                </Officers>
+              ))}
+            </Grid>
+          )}
+        />
       </Zone>
       <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
         <div className="zone-content">
@@ -222,7 +232,7 @@ const Officers = styled.div`
     transition: 0.3s ease all;
     position: absolute;
     top: -20px;
-    width: 70vw; 
+    width: 70vw;
     left: -20px;
     padding: 20px;
     background: ${darkBlue};
@@ -239,7 +249,8 @@ const Officers = styled.div`
       opacity: 1;
     }
   }
-  &:nth-child(3), &:nth-child(4) {
+  &:nth-child(3),
+  &:nth-child(4) {
     .window {
       flex-direction: row-reverse;
       left: auto;
