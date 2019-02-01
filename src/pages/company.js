@@ -8,7 +8,6 @@ import { Zone, darkBlue, Grid, Button, LargeP } from '../elements'
 import { serif } from '../utilities'
 
 import hero from '../images/SarahAndrie-company-pg.jpg'
-import timeline from '../images/timeline.png'
 import bluewater from '../images/bluewater-background.jpg'
 import bike from '../images/biking-sponsorship-image.jpg'
 

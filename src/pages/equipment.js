@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { Zone, Grid } from '../elements'
 
@@ -9,96 +10,112 @@ import barbara from '../images/barbara.jpg'
 
 const EquipmentPage = () => (
   <Layout>
-    <div>
-      <Zone modifiers={['solid']} hero={true} image={hero}>
-        <EquipHeading>
-          <h3>Tugboats</h3>
-        </EquipHeading>
-        <Grid>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-        </Grid>
-      </Zone>
-      <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
-        <EquipHeading>
-          <h3>Barges</h3>
-        </EquipHeading>
-        <Grid>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-        </Grid>
-      </Zone>
-      <Zone modifiers={['solid', 'short']} image={hero}>
-        <EquipHeading>
-          <h3>Jack-up Barges</h3>
-        </EquipHeading>
-        <Grid>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-        </Grid>
-      </Zone>
-      <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
-        <EquipHeading>
-          <h3>Other Equipment</h3>
-        </EquipHeading>
-        <Grid>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-          <EquipItem to={'/equipment/barbara'}>
-            <img src={barbara} />
-            <h6>Barbara Andrie</h6>
-          </EquipItem>
-        </Grid>
-      </Zone>
-    </div>
+    <StaticQuery
+      query={graphql`
+        query Equipment {
+          allWordpressWpEquipment {
+            edges {
+              node {
+                title
+                slug
+                featured_media {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 400) {
+                        ...GatsbyImageSharpFluid_tracedSVG
+                      }
+                    }
+                  }
+                }
+                acf {
+                  type
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={({ allWordpressWpEquipment }) => (
+        <div>
+          <Zone modifiers={['solid']} hero={true} image={hero}>
+            <EquipHeading>
+              <h3>Tugboats</h3>
+            </EquipHeading>
+            <Grid>
+              {allWordpressWpEquipment.edges
+                .filter(item => item.node.acf.type === 'tugboat')
+                .map(({ node }) => (
+                  <EquipItem to={`/equipment/${node.slug}`}>
+                    <Img
+                      fluid={
+                        node.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                    <h6>{node.title}</h6>
+                  </EquipItem>
+                ))}
+            </Grid>
+          </Zone>
+          <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
+            <EquipHeading>
+              <h3>Barges</h3>
+            </EquipHeading>
+            <Grid>
+              {allWordpressWpEquipment.edges
+                .filter(item => item.node.acf.type === 'barge')
+                .map(({ node }) => (
+                  <EquipItem to={`/equipment/${node.slug}`}>
+                    <Img
+                      fluid={
+                        node.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                    <h6>{node.title}</h6>
+                  </EquipItem>
+                ))}
+            </Grid>
+          </Zone>
+          <Zone modifiers={['solid', 'short']} image={hero}>
+            <EquipHeading>
+              <h3>Jack-up Barges</h3>
+            </EquipHeading>
+            <Grid>
+              {allWordpressWpEquipment.edges
+                .filter(item => item.node.acf.type === 'jackup')
+                .map(({ node }) => (
+                  <EquipItem to={`/equipment/${node.slug}`}>
+                    <Img
+                      fluid={
+                        node.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                    <h6>{node.title}</h6>
+                  </EquipItem>
+                ))}
+            </Grid>
+          </Zone>
+          <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
+            <EquipHeading>
+              <h3>Other Equipment</h3>
+            </EquipHeading>
+            <Grid>
+              {allWordpressWpEquipment.edges
+                .filter(item => item.node.acf.type === 'other')
+                .map(({ node }) => (
+                  <EquipItem to={`/equipment/${node.slug}`}>
+                    <Img
+                      fluid={
+                        node.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                    <h6>{node.title}</h6>
+                  </EquipItem>
+                ))}
+            </Grid>
+          </Zone>
+        </div>
+      )}
+    />
   </Layout>
 )
 
@@ -117,11 +134,12 @@ const EquipItem = styled(Link)`
   text-decoration: none;
   color: white;
   font-size: 1.4rem;
-  img {
+  .gatsby-image-wrapper {
+    margin-bottom: 1rem;
     transition: 0.3s ease all;
   }
   &:hover {
-    img {
+    .gatsby-image-wrapper {
       transform: scale(1.2) translate3d(0, -10px, 0);
       box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3),
         0px 0px 10px rgba(0, 0, 0, 0.1);

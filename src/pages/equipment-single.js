@@ -1,0 +1,125 @@
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
+import Layout from '../components/Layout'
+import { blue, above } from '../elements'
+
+const EquipmentPage = ({ data: { wordpressWpEquipment } }) => (
+  <Layout>
+    <EquipHeading>
+      <Link to="/equipment">&laquo; Back to main list</Link>
+    </EquipHeading>
+    <EquipBody>
+      <EquipDetails>
+        <h1>{wordpressWpEquipment.title}</h1>
+        <p>{wordpressWpEquipment.acf.subheading}</p>
+        <ul>
+          <li>
+            <span>Length</span> {wordpressWpEquipment.acf.length}
+          </li>
+          <li>
+            <span>Width</span> {wordpressWpEquipment.acf.width}
+          </li>
+          <li>
+            <span>Power</span> {wordpressWpEquipment.acf.power}
+          </li>
+          <li>
+            <span>Capacity</span> {wordpressWpEquipment.acf.capacity}
+          </li>
+        </ul>
+        <h3>For more information, please contact:</h3>
+        <ul>
+          <li>Name </li>
+          <li>Phone </li>
+          <li>Email </li>
+          <li>Request </li>
+        </ul>
+      </EquipDetails>
+    </EquipBody>
+  </Layout>
+)
+
+export default EquipmentPage
+
+const EquipHeading = styled.div`
+  padding: 2rem 5%;
+  font-size: 14px;
+  padding-top: 220px;
+  margin-top: -230px;
+  ${above.med`
+    padding-top: 180px;
+    margin-top: -130px;
+  `};
+  a {
+    color: white;
+    text-transform: uppercase;
+  }
+  background: ${blue};
+`
+
+const EquipBody = styled.div`
+  height: 70vh;
+  background: ${blue} url(${({ bg }) => bg});
+  background-size: cover;
+  padding: 2rem 5%;
+`
+
+const EquipDetails = styled.div`
+  background: rgba(0, 0, 0, 0.7);
+  max-width: 400px;
+  color: white;
+  padding: 40px;
+  ${above.med`
+    margin-left: auto;
+  `}
+  h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin-bottom: 4px;
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+  h3 {
+    margin: 2rem 0 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+`
+
+export const query = graphql`
+  query EquipmentQuery($slug: String!) {
+    wordpressWpEquipment(slug: { eq: $slug }) {
+      title
+      slug
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+      acf {
+        type
+        subheading
+        width
+        power
+        length
+        capacity
+      }
+    }
+  }
+`
