@@ -69,7 +69,6 @@ const IndexPage = () => (
             <p>Community sponsorships, latest happening and events</p>
           </div>
         </ContactSplit>
-        <Button modifiers={['dark']}>View All Equipment</Button>
       </ContacZone>
     </div>
   </Layout>
@@ -79,6 +78,8 @@ export default IndexPage
 
 const ContactSplit = styled(SplitLayout)`
   justify-content: space-around;
+  max-width: 650px;
+  margin: 0 auto;
   > * {
     max-width: 300px;
   }

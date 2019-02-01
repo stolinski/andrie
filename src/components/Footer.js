@@ -30,7 +30,8 @@ export default class Footer extends Component {
           <li>phone 231.728.2226 toll free 800.722.2421</li>
         </ContactInfo>
         <Copywrite>
-          Andrie Transportation Group © 2018 All Rights Reserved.
+          Andrie Transportation Group ©{new Date().getFullYear()} All Rights
+          Reserved.
         </Copywrite>
       </FooterContainer>
     )
