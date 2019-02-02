@@ -1,4 +1,5 @@
 import { applyStyleModifiers } from 'styled-components-modifiers'
+import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 import { darkBlue, blue, darkGrey, lightBlue } from './colors'
 import { sans } from '../utilities/Type'
@@ -136,7 +137,8 @@ export const Zone = styled.section`
     `};
 `
 
-export const Box = styled.div`
+export const Box = styled(Link)`
+  text-decoration: none;
   padding: 7%;
   text-align: center;
   color: white;
@@ -206,6 +208,9 @@ export const BoxWrapper = styled.section`
   ${above.med`
     display: flex;
   `};
+  > * {
+    display: block;
+  }
 `
 
 export const FormBox = styled.section`

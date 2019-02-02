@@ -52,9 +52,23 @@ const IndexPage = () => (
             }
           }
         }
+        allWordpressWpHomepageLinks {
+          edges {
+            node {
+              title
+              content
+              featured_media {
+                source_url
+              }
+              acf {
+                page_link
+              }
+            }
+          }
+        }
       }
     `}
-    render={({ wordpressPage }) => (
+    render={({ wordpressPage, allWordpressWpHomepageLinks }) => (
       <Layout>
         <div>
           <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
@@ -164,18 +178,22 @@ const IndexPage = () => (
             </div>
           </Zone>
           <BoxWrapper>
-            <Box image={waves}>
-              <div className="box-inner">
-                <h4>andrie making waves</h4>
-                <p>New & Seaworthy</p>
-              </div>
-            </Box>
-            <Box image={community}>
-              <div className="box-inner">
-                <h4>In the community</h4>
-                <p>New & Seaworthy</p>
-              </div>
-            </Box>
+            {allWordpressWpHomepageLinks.edges.map(({ node }) => (
+              <Box
+                key={node.slug}
+                image={node.featured_media.source_url}
+                to={node.acf.page_link.replace(/https:\/\/andrieapi.com/g, '')}
+              >
+                <div className="box-inner">
+                  <h4>{node.title}</h4>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: node.content,
+                    }}
+                  />
+                </div>
+              </Box>
+            ))}
           </BoxWrapper>
           <Newsletter />
           <Zone modifiers={['blank', 'center', 'short']}>
