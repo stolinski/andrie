@@ -108,7 +108,7 @@ const EquipDetails = styled.div`
 `
 
 export const query = graphql`
-  query EquipmentQuery($slug: String!) {
+  query EquipmentQuery($slug: String) {
     wordpressWpEquipment(slug: { eq: $slug }) {
       title
       slug
