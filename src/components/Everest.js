@@ -1,42 +1,47 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
+import Img from 'gatsby-image'
+import { StaticQuery } from 'gatsby'
 import { brightBlue, blue } from '../elements'
 import { serif } from '../utilities'
 
-import barbara from '../images/barbara.jpg'
+export default class EverestWrapper extends Component {
+  render() {
+    return (
+      <StaticQuery
+        query={graphql`
+          query {
+            allWordpressWpTimeline {
+              edges {
+                node {
+                  title
+                  content
+                  acf {
+                    year
+                  }
+                  featured_media {
+                    localFile {
+                      childImageSharp {
+                        fluid(maxWidth: 400) {
+                          ...GatsbyImageSharpFluid_tracedSVG
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `}
+        render={({ allWordpressWpTimeline }) => (
+          <Everest data={allWordpressWpTimeline.edges} />
+        )}
+      />
+    )
+  }
+}
 
-const data = [
-  {
-    year: '1988',
-    heading:
-      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
-    body:
-      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
-  },
-  {
-    year: '1989',
-    heading:
-      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
-    body:
-      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
-  },
-  {
-    year: '1990',
-    heading:
-      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
-    body:
-      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
-  },
-  {
-    year: '1993',
-    heading:
-      'With 3 tugs, 2 barges and a select group of seasoned employees, Andrie inc., began operations.',
-    body:
-      'Five members of the Andrie Family, with their long involvement in the marine industry, founded and financed plan to operate a family owned Marine Company.',
-  },
-]
-
-export default class Everest extends Component {
+class Everest extends Component {
   state = {
     active: 0,
   }
@@ -52,6 +57,7 @@ export default class Everest extends Component {
 
   next = () => {
     const { active } = this.state
+    const { data } = this.props
     if (active < data.length - 1) {
       this.setState({
         active: active + 1,
@@ -61,6 +67,7 @@ export default class Everest extends Component {
 
   render() {
     const { active } = this.state
+    const { data } = this.props
     return (
       <TimelineZone>
         <TimelineH>Andrie History</TimelineH>
@@ -69,10 +76,10 @@ export default class Everest extends Component {
             <TrackLineContainer>
               <TrackLine />
               <TrackDots>
-                {data.map((item, index) => (
+                {data.map(({ node }, index) => (
                   <TrackDotWrapper>
                     <TrackDotsYear active={active === index}>
-                      {item.year}
+                      {node.acf.year}
                     </TrackDotsYear>
                     <TrackDot
                       onClick={() =>
@@ -99,15 +106,21 @@ export default class Everest extends Component {
               transform: 'translate3d(' + active * -100 + 'vw, 0, 0)',
             }}
           >
-            {data.map(item => (
-              <Slide key={item.year}>
+            {data.map(({ node }) => (
+              <Slide key={node.acf.year}>
                 <div className="img">
-                  <img src={barbara} />
+                  <Img
+                    fluid={node.featured_media.localFile.childImageSharp.fluid}
+                  />
                 </div>
                 <div>
-                  <h3>{item.year}</h3>
-                  <h4>{item.heading}</h4>
-                  <p>{item.body}</p>
+                  <h3>{node.acf.year}</h3>
+                  <h4>{node.title}</h4>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: node.content,
+                    }}
+                  />
                 </div>
               </Slide>
             ))}
