@@ -9,7 +9,7 @@ import logo from '../images/andrie_logo-site.svg'
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
-    <h1 style={{ margin: 0 }}>
+    <h1 style={{ margin: '10px 0 0' }}>
       <Link
         to="/"
         style={{
