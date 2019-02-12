@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, StaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import Newsletter from '../components/Newsletter'
@@ -9,8 +10,6 @@ import { Zone, BoxWrapper, Box, Button, SplitLayout, above } from '../elements'
 import hero from '../images/Home-HeroSpace.jpg'
 import greatLakes from '../images/greatlakes-background.jpg'
 import barbara from '../images/barbara.jpg'
-import waves from '../images/SarahAndrie-makingwaves.jpg'
-import community from '../images/Andrie-biking-community.jpg'
 import asphaltinstitute from '../images/asphaltinstitute.jpg'
 
 const settings = {
@@ -66,151 +65,169 @@ const IndexPage = () => (
             }
           }
         }
+        allWordpressWpMembership {
+          edges {
+            node {
+              title
+              content
+              featured_media {
+                localFile {
+                  childImageSharp {
+                    resize(height: 200) {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        allWordpressWpEquipment(limit: 10, sort: { fields: [acf___weight] }) {
+          edges {
+            node {
+              title
+              slug
+              featured_media {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 400, maxHeight: 220, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_tracedSVG
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     `}
-    render={({ wordpressPage, allWordpressWpHomepageLinks }) => (
-      <Layout>
-        <div>
-          <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
-            <div className="zone-content">
-              <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: wordpressPage.acf.zones_page[0].paragraph,
-                }}
-              />
-              <Button to="/company">About Andrie</Button>
-            </div>
-          </Zone>
-          <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
-            <div className="zone-content">
-              <h2>{wordpressPage.acf.zones_page[1].heading}</h2>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: wordpressPage.acf.zones_page[1].paragraph,
-                }}
-              />
-              <Button to="/services">Services & Sites</Button>
-            </div>
-          </Zone>
-          <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
-            <div style={{ marginBottom: '2rem' }}>
-              <Slider {...settings}>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
+    render={({
+      wordpressPage,
+      allWordpressWpHomepageLinks,
+      allWordpressWpEquipment,
+      allWordpressWpMembership,
+    }) => {
+      const randomMembershipIndex = Math.floor(
+        Math.random() * allWordpressWpMembership.edges.length
+      )
+      return (
+        <Layout>
+          <div>
+            <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
+              <div className="zone-content">
+                <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: wordpressPage.acf.zones_page[0].paragraph,
+                  }}
+                />
+                <Button to="/company">About Andrie</Button>
+              </div>
+            </Zone>
+            <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
+              <div className="zone-content">
+                <h2>{wordpressPage.acf.zones_page[1].heading}</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: wordpressPage.acf.zones_page[1].paragraph,
+                  }}
+                />
+                <Button to="/services">Services & Sites</Button>
+              </div>
+            </Zone>
+            <Zone modifiers={['blank', 'center', 'short']} fullWidth={true}>
+              <div style={{ marginBottom: '2rem' }}>
+                <Slider {...settings}>
+                  {allWordpressWpEquipment.edges
+                    .map(a => ({ sort: Math.random(), value: a }))
+                    .sort((a, b) => a.sort - b.sort)
+                    .map(a => a.value)
+                    .map(({ node }) => (
+                      <EquipItem to={`/equipment/${node.slug}`}>
+                        <div>
+                          <Img
+                            fluid={
+                              node.featured_media.localFile.childImageSharp
+                                .fluid
+                            }
+                          />
+                          <div className="text-overlay">
+                            <h6>{node.title}</h6>
+                          </div>
+                        </div>
+                      </EquipItem>
+                    ))}
+                </Slider>
+              </div>
+              <Button to="/equipment" modifiers={['dark']}>
+                View All Equipment
+              </Button>
+            </Zone>
+            <Zone left={true} image={barbara}>
+              <div className="zone-content">
+                <h2>{wordpressPage.acf.zones_page[2].heading}</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: wordpressPage.acf.zones_page[2].paragraph,
+                  }}
+                />
+                <Button to="/safety">Safety First</Button>
+              </div>
+            </Zone>
+            <BoxWrapper>
+              {allWordpressWpHomepageLinks.edges.map(({ node }) => (
+                <Box
+                  key={node.slug}
+                  image={node.featured_media.source_url}
+                  to={node.acf.page_link.replace(
+                    /https:\/\/andrieapi.com/g,
+                    ''
+                  )}
+                >
+                  <div className="box-inner">
+                    <h4>{node.title}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: node.content,
+                      }}
+                    />
                   </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-                <EquipItem to={'/equipment/barbara'}>
-                  <div>
-                    <img src={barbara} />
-                    <div className="text-overlay">
-                      <h6>Barbara Andrie</h6>
-                    </div>
-                  </div>
-                </EquipItem>
-              </Slider>
-            </div>
-            <Button to="/equipment" modifiers={['dark']}>
-              View All Equipment
-            </Button>
-          </Zone>
-          <Zone left={true} image={barbara}>
-            <div className="zone-content">
-              <h2>{wordpressPage.acf.zones_page[2].heading}</h2>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: wordpressPage.acf.zones_page[2].paragraph,
-                }}
-              />
-              <Button to="/safety">Safety First</Button>
-            </div>
-          </Zone>
-          <BoxWrapper>
-            {allWordpressWpHomepageLinks.edges.map(({ node }) => (
-              <Box
-                key={node.slug}
-                image={node.featured_media.source_url}
-                to={node.acf.page_link.replace(/https:\/\/andrieapi.com/g, '')}
-              >
-                <div className="box-inner">
-                  <h4>{node.title}</h4>
+                </Box>
+              ))}
+            </BoxWrapper>
+            <Newsletter />
+            <Zone modifiers={['blank', 'center', 'short']}>
+              <MembershipSplit>
+                <div>
+                  <img
+                    src={
+                      allWordpressWpMembership.edges[randomMembershipIndex].node
+                        .featured_media.localFile.childImageSharp.resize.src
+                    }
+                  />
+                </div>
+                <div>
+                  <h4>Featured Membership</h4>
+                  <h5>
+                    {
+                      allWordpressWpMembership.edges[randomMembershipIndex].node
+                        .title
+                    }
+                  </h5>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: node.content,
+                      __html:
+                        allWordpressWpMembership.edges[randomMembershipIndex]
+                          .node.content,
                     }}
                   />
                 </div>
-              </Box>
-            ))}
-          </BoxWrapper>
-          <Newsletter />
-          <Zone modifiers={['blank', 'center', 'short']}>
-            <MembershipSplit>
-              <div>
-                <img src={asphaltinstitute} />
-              </div>
-              <div>
-                <h4>Featured Membership</h4>
-                <h5>Asphalt Institute</h5>
-                <p>Additional text about affiliation Board Member Associated</p>
-              </div>
-            </MembershipSplit>
-          </Zone>
-        </div>
-      </Layout>
-    )}
+              </MembershipSplit>
+            </Zone>
+          </div>
+        </Layout>
+      )
+    }}
   />
 )
 
@@ -228,7 +245,7 @@ const MembershipSplit = styled(SplitLayout)`
   }
   ${above.med`
     > * {
-      width: 50%;
+      width: 49%;
       text-align: left;
     }
   `};
