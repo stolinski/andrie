@@ -20,18 +20,26 @@ const EquipmentPage = ({ data: { wordpressWpEquipment } }) => (
         <h1>{wordpressWpEquipment.title}</h1>
         <p>{wordpressWpEquipment.acf.subheading}</p>
         <ul>
-          <li>
-            <span>Length</span> {wordpressWpEquipment.acf.length}
-          </li>
-          <li>
-            <span>Width</span> {wordpressWpEquipment.acf.width}
-          </li>
-          <li>
-            <span>Power</span> {wordpressWpEquipment.acf.power}
-          </li>
-          <li>
-            <span>Capacity</span> {wordpressWpEquipment.acf.capacity}
-          </li>
+          {wordpressWpEquipment.acf.length && (
+            <li>
+              <span>Length</span> {wordpressWpEquipment.acf.length}
+            </li>
+          )}
+          {wordpressWpEquipment.acf.width && (
+            <li>
+              <span>Width</span> {wordpressWpEquipment.acf.width}
+            </li>
+          )}
+          {wordpressWpEquipment.acf.power && (
+            <li>
+              <span>Power</span> {wordpressWpEquipment.acf.power}
+            </li>
+          )}
+          {wordpressWpEquipment.acf.capacity && (
+            <li>
+              <span>Capacity</span> {wordpressWpEquipment.acf.capacity}
+            </li>
+          )}
         </ul>
         <h3>For more information, please contact:</h3>
         <ul>

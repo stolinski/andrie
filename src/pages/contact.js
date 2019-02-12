@@ -54,7 +54,7 @@ const IndexPage = () => (
           <button style={{ marginLeft: 'auto' }}>Send</button>
         </ContactForm>
       </FormBox>
-      <ContacZone modifiers={['center', 'solid', 'short']}>
+      {/* <ContacZone modifiers={['center', 'solid', 'short']}>
         <h3>Connect</h3>
         <h4>Learn more about Andrie and join our community online.</h4>
         <ContactSplit>
@@ -77,7 +77,7 @@ const IndexPage = () => (
             <p>Community sponsorships, latest happening and events</p>
           </a>
         </ContactSplit>
-      </ContacZone>
+      </ContacZone> */}
     </div>
   </Layout>
 )

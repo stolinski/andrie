@@ -11,7 +11,7 @@ const EquipmentPage = () => (
     <StaticQuery
       query={graphql`
         query Equipment {
-          allWordpressWpEquipment {
+          allWordpressWpEquipment(sort: { fields: [acf___weight] }) {
             edges {
               node {
                 title

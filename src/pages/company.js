@@ -69,7 +69,7 @@ const IndexPage = () => (
         <StaticQuery
           query={graphql`
             query {
-              allWordpressWpOfficer {
+              allWordpressWpOfficer(sort: { fields: [acf___weight] }) {
                 edges {
                   node {
                     title

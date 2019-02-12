@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import Nav from './Nav'
 import MobileNav from './MobileNav'
-import { above, Button, blue, Toggle} from '../elements'
+import { above, Button, blue, Toggle } from '../elements'
 
 import logo from '../images/andrie_logo-site.svg'
 
@@ -17,20 +17,22 @@ const Header = ({ siteTitle }) => (
           textDecoration: 'none',
         }}
       >
-        <img src={logo} alt="Andrie Inc." style={{ width: '200px', marginBottom: 0 }} />
+        <img
+          src={logo}
+          alt="Andrie Inc."
+          style={{ height: '120px', marginBottom: 0 }}
+        />
       </Link>
     </h1>
     <Toggle>
-    {({ on, toggle }) => (
-      <>
-          <button style={{marginTop: "1rem"}} onClick={toggle}>
+      {({ on, toggle }) => (
+        <>
+          <button style={{ marginTop: '1rem' }} onClick={toggle}>
             Menu
           </button>
-          {on &&
-            <MobileNav toggle={toggle} />
-          }
-      </>
-    )}
+          {on && <MobileNav toggle={toggle} />}
+        </>
+      )}
     </Toggle>
     <Nav />
   </HeaderWrapper>
