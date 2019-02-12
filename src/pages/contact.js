@@ -1,60 +1,63 @@
 import React from 'react'
+import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Zone, Button, FormBox, blue, SplitLayout } from '../elements'
+import { Zone, FormBox, blue, SplitLayout } from '../elements'
 import { serif } from '../utilities'
 
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
-import linkedin from '../images/linkedin-circle.svg'
-import facebook from '../images/facebook-circle.svg'
 
 const IndexPage = () => (
-  <Layout>
-    <div>
-      <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
-        <div className="zone-content">
-          <h2>Contact Andrie</h2>
-          <p>
-            Andrie Inc.
-            <br />
-            561 E. Western Avenue
-            <br />
-            Muskegon, Michigan 49442
-            <br />
-          </p>
-          <p>
-            Phone: 231.728.2226
-            <br />
-            Tol Free Phone: 800.722.2421
-            <br />
-            Fax: 231.726.6747
-            <br />
-          </p>
-        </div>
-      </Zone>
-      <FormBox>
-        <h3>Send an Email</h3>
-        <p>
-          If you'd like to speak with someone in a specific department, please
-          send us a note using form below.
-        </p>
-        <ContactForm action="">
-          <label htmlFor="sendto">
-            <span>Send To:</span>
-            <input type="text" placeholder="Email Address" />
-          </label>
-          <label htmlFor="from">
-            <span>From:</span>
-            <input type="text" placeholder="Email Address" />
-          </label>
-          <label htmlFor="message">
-            <span>Message:</span>
-            <textarea />
-          </label>
-          <button style={{ marginLeft: 'auto' }}>Send</button>
-        </ContactForm>
-      </FormBox>
-      {/* <ContacZone modifiers={['center', 'solid', 'short']}>
+  <StaticQuery
+    query={graphql`
+      query {
+        wordpressPage(slug: { eq: "contact" }) {
+          slug
+          acf {
+            zones_page {
+              heading
+              paragraph
+            }
+          }
+        }
+      }
+    `}
+    render={({ wordpressPage }) => (
+      <Layout>
+        <div>
+          <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
+            <div className="zone-content">
+              <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.acf.zones_page[0].paragraph.replace(
+                    /(\r\n|\n|\r)/g,
+                    '<br />'
+                  ),
+                }}
+              />
+            </div>
+          </Zone>
+          <FormBox>
+            <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
+            <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
+            <ContactForm action="">
+              <label htmlFor="sendto">
+                <span>Send To:</span>
+                <input type="text" placeholder="Email Address" />
+              </label>
+              <label htmlFor="from">
+                <span>From:</span>
+                <input type="text" placeholder="Email Address" />
+              </label>
+              <label htmlFor="message">
+                <span>Message:</span>
+                <textarea />
+              </label>
+              <button style={{ marginLeft: 'auto' }}>Send</button>
+            </ContactForm>
+          </FormBox>
+          {/* <ContacZone modifiers={['center', 'solid', 'short']}>
         <h3>Connect</h3>
         <h4>Learn more about Andrie and join our community online.</h4>
         <ContactSplit>
@@ -78,8 +81,10 @@ const IndexPage = () => (
           </a>
         </ContactSplit>
       </ContacZone> */}
-    </div>
-  </Layout>
+        </div>
+      </Layout>
+    )}
+  />
 )
 
 export default IndexPage
