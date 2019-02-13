@@ -30,15 +30,26 @@ exports.createPages = ({ graphql, actions }) => {
           },
         })
       })
-      results.data.allWordpressPage.edges.forEach(({ node }) => {
-        createPage({
-          path: `/${node.slug}`,
-          component: path.resolve('./src/pages/generic.js'),
-          context: {
-            slug: node.slug,
-          },
+      results.data.allWordpressPage.edges
+        .filter(({ node }) => {
+          return (
+            node.slug !== 'safety' &&
+            node.slug !== 'services' &&
+            node.slug !== 'company' &&
+            node.slug !== 'equipment' &&
+            node.slug !== 'jobs' &&
+            node.slug !== 'contact'
+          )
         })
-      })
+        .forEach(({ node }) => {
+          createPage({
+            path: `/${node.slug}`,
+            component: path.resolve('./src/pages/generic.js'),
+            context: {
+              slug: node.slug,
+            },
+          })
+        })
       resolve()
     })
   })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
-import { Zone, Button } from '../elements'
+import { Zone } from '../elements'
 
 import hero from '../images/safety.jpg'
 
@@ -26,7 +26,7 @@ const IndexPage = () => (
           <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
             <div className="zone-content">
               <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-              <div
+              <p
                 dangerouslySetInnerHTML={{
                   __html: wordpressPage.acf.zones_page[0].paragraph,
                 }}
