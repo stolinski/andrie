@@ -1,4 +1,4 @@
-<svg width="669" height="462" viewBox="0 0 669 462" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="669" height="462" viewBox="0 0 669 462" fill="none">
 <g id="Andrie-locations-map-forScott">
 <g id="map">
 <path id="Vector" d="M669 0H0V462H669V0Z" fill="#184F81"/>
@@ -63,7 +63,7 @@
 <path id="Vector_52" d="M359.081 220.188V221.863H358.546V220.188H357.918V219.755H359.715V220.188H359.081Z" fill="black"/>
 </g>
 </g>
-<g id="container" class="container">
+<g id="container" className="container">
 <path id="Vector_53" d="M368.158 185.185C369.593 184.103 369.878 182.064 368.796 180.629C367.714 179.195 365.674 178.91 364.24 179.992C362.806 181.074 362.52 183.114 363.602 184.548C364.684 185.982 366.724 186.268 368.158 185.185Z" stroke="red" stroke-width="0.5" stroke-miterlimit="10"/>
 <path id="Vector_54" d="M431.233 159.247H371.5V189.184H431.233V159.247Z" fill="white"/>
 <g id="Group_3">
