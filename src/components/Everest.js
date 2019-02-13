@@ -75,7 +75,11 @@ class Everest extends Component {
           <Track>
             <TrackLineContainer>
               <TrackLine />
-              <TrackDots>
+              <TrackDots
+                style={{
+                  transform: `translate3d(${active * 32 * -1}%, 0, 0)`,
+                }}
+              >
                 {data.map(({ node }, index) => (
                   <TrackDotWrapper>
                     <TrackDotsYear active={active === index}>
