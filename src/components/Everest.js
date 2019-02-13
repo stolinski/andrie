@@ -11,7 +11,7 @@ export default class EverestWrapper extends Component {
       <StaticQuery
         query={graphql`
           query {
-            allWordpressWpTimeline {
+            allWordpressWpTimeline(sort: { fields: [acf___year] }) {
               edges {
                 node {
                   title
