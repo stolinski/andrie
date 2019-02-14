@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
-import Map from '../components/Map'
+import Map from '../components/StaticMap'
 import { Zone, LargeP } from '../elements'
 
 import hero from '../images/A410-fleet.jpg'
