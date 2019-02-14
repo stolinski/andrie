@@ -163,9 +163,6 @@ const IndexPage = () => (
           </ul>
         </div>
       </Zone>
-      {/* <Zone modifiers={['solid', 'center', 'short', 'white']}>
-        <h3>Memberships</h3>
-      </Zone> */}
       <Zone modifiers={['center']} image={bike}>
         <h3>Community Sponsorships</h3>
         <LargeP>
@@ -173,7 +170,7 @@ const IndexPage = () => (
           more about all of the groups that have strengthened by our involvement
           and ongoing commitment to their success.
         </LargeP>
-        <Button to="/services">Learn More</Button>
+        <Button to="/community-sponsorships">Learn More</Button>
       </Zone>
       <Zone modifiers={['solid', 'center', 'short', 'grey']}>
         <h3>Work at Andrie</h3>

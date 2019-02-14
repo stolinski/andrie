@@ -42,7 +42,7 @@ export default Header
 
 const HeaderWrapper = styled.header`
   height: 230px;
-  padding: 20px 10%;
+  padding: 40px 10% 20px;
   display: flex;
   z-index: 100;
   position: relative;
