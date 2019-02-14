@@ -12,9 +12,10 @@ const GenericPage = ({ data: { wordpressPage } }) => (
     <Zone modifiers={['dark', 'solid']} hero={true} image={hero}>
       <JobsLayout>
         <JobsImageCol>
-          {wordpressPage.acf.images.map(({ image }) => (
-            <Img fluid={image.localFile.childImageSharp.fluid} />
-          ))}
+          {wordpressPage.acf.images.length > 0 &&
+            wordpressPage.acf.images.map(({ image }) => (
+              <Img fluid={image.localFile.childImageSharp.fluid} />
+            ))}
         </JobsImageCol>
         <div>
           <h2>{wordpressPage.title}</h2>
