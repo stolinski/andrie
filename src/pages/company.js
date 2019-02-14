@@ -163,9 +163,9 @@ const IndexPage = () => (
           </ul>
         </div>
       </Zone>
-      <Zone modifiers={['solid', 'center', 'short', 'white']}>
+      {/* <Zone modifiers={['solid', 'center', 'short', 'white']}>
         <h3>Memberships</h3>
-      </Zone>
+      </Zone> */}
       <Zone modifiers={['center']} image={bike}>
         <h3>Community Sponsorships</h3>
         <LargeP>
