@@ -44,11 +44,13 @@ const EquipmentPage = () => (
                 .filter(item => item.node.acf.type === 'tugboat')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
-                    <Img
-                      fluid={
-                        node.featured_media.localFile.childImageSharp.fluid
-                      }
-                    />
+                    {node.featured_media && node.featured_media.localFile && (
+                      <Img
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
                     <h6>{node.title}</h6>
                   </EquipItem>
                 ))}
@@ -63,11 +65,13 @@ const EquipmentPage = () => (
                 .filter(item => item.node.acf.type === 'barge')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
-                    <Img
-                      fluid={
-                        node.featured_media.localFile.childImageSharp.fluid
-                      }
-                    />
+                    {node.featured_media && node.featured_media.localFile && (
+                      <Img
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
                     <h6>{node.title}</h6>
                   </EquipItem>
                 ))}
@@ -82,11 +86,13 @@ const EquipmentPage = () => (
                 .filter(item => item.node.acf.type === 'jackup')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
-                    <Img
-                      fluid={
-                        node.featured_media.localFile.childImageSharp.fluid
-                      }
-                    />
+                    {node.featured_media && node.featured_media.localFile && (
+                      <Img
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
                     <h6>{node.title}</h6>
                   </EquipItem>
                 ))}
@@ -101,11 +107,13 @@ const EquipmentPage = () => (
                 .filter(item => item.node.acf.type === 'other')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
-                    <Img
-                      fluid={
-                        node.featured_media.localFile.childImageSharp.fluid
-                      }
-                    />
+                    {node.featured_media && node.featured_media.localFile && (
+                      <Img
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
+                        }
+                      />
+                    )}
                     <h6>{node.title}</h6>
                   </EquipItem>
                 ))}
