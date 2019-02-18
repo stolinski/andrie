@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import Slider from 'react-slick'
 import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
+import Memberships from '../components/Memberships'
 import { Zone, BoxWrapper, Box, Button, SplitLayout, above } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 import greatLakes from '../images/greatlakes-background.jpg'
 import barbara from '../images/barbara.jpg'
-import asphaltinstitute from '../images/asphaltinstitute.jpg'
 
 const settings = {
   dots: false,
@@ -65,23 +65,6 @@ const IndexPage = () => (
             }
           }
         }
-        allWordpressWpMembership {
-          edges {
-            node {
-              title
-              content
-              featured_media {
-                localFile {
-                  childImageSharp {
-                    resize(height: 200) {
-                      src
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
         allWordpressWpEquipment(limit: 10, sort: { fields: [acf___weight] }) {
           edges {
             node {
@@ -105,11 +88,7 @@ const IndexPage = () => (
       wordpressPage,
       allWordpressWpHomepageLinks,
       allWordpressWpEquipment,
-      allWordpressWpMembership,
     }) => {
-      const randomMembershipIndex = Math.floor(
-        Math.random() * allWordpressWpMembership.edges.length
-      )
       return (
         <Layout>
           <div>
@@ -196,60 +175,13 @@ const IndexPage = () => (
               ))}
             </BoxWrapper>
             <Newsletter />
-            <Zone modifiers={['blank', 'center', 'short']}>
-              <MembershipSplit>
-                <div>
-                  <img
-                    src={
-                      allWordpressWpMembership.edges[randomMembershipIndex].node
-                        .featured_media.localFile.childImageSharp.resize.src
-                    }
-                  />
-                </div>
-                <div>
-                  <h4>Featured Membership</h4>
-                  <h5>
-                    {
-                      allWordpressWpMembership.edges[randomMembershipIndex].node
-                        .title
-                    }
-                  </h5>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        allWordpressWpMembership.edges[randomMembershipIndex]
-                          .node.content,
-                    }}
-                  />
-                </div>
-              </MembershipSplit>
-            </Zone>
+            <Memberships />
           </div>
         </Layout>
       )
     }}
   />
 )
-
-const MembershipSplit = styled(SplitLayout)`
-  img {
-    margin: 0 auto;
-    display: block;
-  }
-  h5 {
-    font-size: 30px;
-  }
-  p {
-    font-size: 16px;
-    margin-bottom: 0;
-  }
-  ${above.med`
-    > * {
-      width: 49%;
-      text-align: left;
-    }
-  `};
-`
 
 const EquipItem = styled(Link)`
   padding: 0 10px;

@@ -112,11 +112,15 @@ class Everest extends Component {
           >
             {data.map(({ node }) => (
               <Slide key={node.acf.year}>
-                <div className="img">
-                  <Img
-                    fluid={node.featured_media.localFile.childImageSharp.fluid}
-                  />
-                </div>
+                {node.featured_media && (
+                  <div className="img">
+                    <Img
+                      fluid={
+                        node.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                  </div>
+                )}
                 <div>
                   <h3>{node.acf.year}</h3>
                   <h4>{node.title}</h4>
@@ -249,7 +253,7 @@ const TrackButton = styled.button`
 const Slide = styled.div`
   display: flex;
   width: 100vw;
-  padding: 0 3%;
+  padding: 0 80px;
   .img {
     width: 40%;
     margin-right: 30px;
