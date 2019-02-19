@@ -47,9 +47,10 @@ const IndexPage = () => (
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="contact" />
               <label htmlFor="sendto">
                 <span>Send To:</span>
-                <select name="" id="">
+                <select name="sendto" id="sendto">
                   <option value="mikecaliendo@andrie.com">
                     Sales & Information
                   </option>
@@ -62,11 +63,16 @@ const IndexPage = () => (
               </label>
               <label htmlFor="from">
                 <span>From:</span>
-                <input type="text" placeholder="Email Address" />
+                <input
+                  type="text"
+                  name="from"
+                  id="from"
+                  placeholder="Email Address"
+                />
               </label>
               <label htmlFor="message">
                 <span>Message:</span>
-                <textarea />
+                <textarea name="message" id="message" />
               </label>
               <button style={{ marginLeft: 'auto' }}>Send</button>
             </ContactForm>
