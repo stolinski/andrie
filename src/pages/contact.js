@@ -58,7 +58,6 @@ const IndexPage = () => (
                     Environmental/Safety
                   </option>
                   <option value="careers@andrie.com">Careers</option>
-                  <option value="scott.tolinski@gmail.com">Test Email</option>
                 </select>
               </label>
               <label htmlFor="from">
@@ -142,6 +141,7 @@ const ContactForm = styled.form`
     display: flex;
     text-align: right;
     justify-content: space-between;
+    margin-bottom: 1rem;
     span {
       display: block;
       margin-top: 1rem;
@@ -155,13 +155,19 @@ const ContactForm = styled.form`
     border: none;
     text-align: left;
     width: 80%;
-    margin-bottom: 1rem;
   }
+
+  select {
+    width: 80%;
+    margin-left: 10px;
+  }
+
   textarea {
     margin-left: 10px;
     width: 80%;
     border: none;
     height: 150px;
+    padding: 10px;
   }
   button {
     margin: 1rem 0 0 auto;
