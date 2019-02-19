@@ -3,6 +3,8 @@ import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import { Zone, SplitLayout, above } from '../elements'
 
+const randomMembershipIndex = 0
+
 const Memberships = () => (
   <StaticQuery
     query={graphql`
@@ -27,16 +29,18 @@ const Memberships = () => (
       }
     `}
     render={({ allWordpressWpMembership }) => {
-      const randomMembershipIndex = Math.floor(
-        Math.random() * allWordpressWpMembership.edges.length
-      )
+      // const randomMembershipIndex = Math.floor(
+      //   Math.random() * allWordpressWpMembership.edges.length
+      // )
       return (
         <Zone modifiers={['blank', 'center', 'short']}>
           <MembershipSplit>
             <div>
               <img
-                alt={allWordpressWpMembership.edges[randomMembershipIndex].node
-                    .title}
+                alt={
+                  allWordpressWpMembership.edges[randomMembershipIndex].node
+                    .title
+                }
                 src={
                   allWordpressWpMembership.edges[randomMembershipIndex].node
                     .featured_media.localFile.childImageSharp.resize.src
