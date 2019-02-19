@@ -15,8 +15,9 @@ import barbara from '../images/barbara.jpg'
 const settings = {
   dots: false,
   infinite: true,
+  autoplay: true,
   speed: 500,
-  arrows: false,
+  arrows: true,
   slidesToShow: 3,
   slidesToScroll: 1,
   centerMode: true,
