@@ -35,6 +35,8 @@ const Memberships = () => (
           <MembershipSplit>
             <div>
               <img
+                alt={allWordpressWpMembership.edges[randomMembershipIndex].node
+                    .title}
                 src={
                   allWordpressWpMembership.edges[randomMembershipIndex].node
                     .featured_media.localFile.childImageSharp.resize.src

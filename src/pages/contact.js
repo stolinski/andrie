@@ -2,8 +2,7 @@ import React from 'react'
 import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Zone, FormBox, blue, SplitLayout } from '../elements'
-import { serif } from '../utilities'
+import { Zone, FormBox, blue } from '../elements'
 
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 
@@ -89,33 +88,33 @@ const IndexPage = () => (
 
 export default IndexPage
 
-const ContactSplit = styled(SplitLayout)`
-  justify-content: space-around;
-  max-width: 650px;
-  margin: 0 auto;
-  > * {
-    max-width: 300px;
-  }
-  h5 {
-    font-size: 1.75rem;
-  }
-`
+// const ContactSplit = styled(SplitLayout)`
+//   justify-content: space-around;
+//   max-width: 650px;
+//   margin: 0 auto;
+//   > * {
+//     max-width: 300px;
+//   }
+//   h5 {
+//     font-size: 1.75rem;
+//   }
+// `
 
-const ContacZone = styled(Zone)`
-  h3 {
-    text-transform: uppercase;
-    font-size: 2rem;
-  }
-  h4 {
-    font-size: 1.5rem;
-    text-transform: none;
-    font-weight: 400;
-    ${serif()};
-  }
-  p {
-    margin-bottom: 0;
-  }
-`
+// const ContacZone = styled(Zone)`
+//   h3 {
+//     text-transform: uppercase;
+//     font-size: 2rem;
+//   }
+//   h4 {
+//     font-size: 1.5rem;
+//     text-transform: none;
+//     font-weight: 400;
+//     ${serif()};
+//   }
+//   p {
+//     margin-bottom: 0;
+//   }
+// `
 
 const ContactForm = styled.form`
   label {

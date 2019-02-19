@@ -6,7 +6,7 @@ import Slider from 'react-slick'
 import Newsletter from '../components/Newsletter'
 import Layout from '../components/Layout'
 import Memberships from '../components/Memberships'
-import { Zone, BoxWrapper, Box, Button, SplitLayout, above } from '../elements'
+import { Zone, BoxWrapper, Box, Button } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 import greatLakes from '../images/greatlakes-background.jpg'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { lightBlue, above, blue, below } from '../elements'
+import { above, lightBlue } from '../elements'
 
 const Links = [
   {
@@ -69,9 +69,4 @@ const Navigation = styled.nav`
       }
     }
   `};
-`
-const NavButton = styled.button`
-  ${above.med`
-      display: none;
-    `};
 `

@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import Nav from './Nav'
 import MobileNav from './MobileNav'
-import { above, Button, blue, Toggle } from '../elements'
+import { above, blue, Toggle } from '../elements'
 
 import logo from '../images/andrie_logo-site.svg'
 
