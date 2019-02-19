@@ -40,10 +40,25 @@ const IndexPage = () => (
           <FormBox>
             <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
             <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
-            <ContactForm action="">
+            <ContactForm
+              name="contact"
+              method="post"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="bot-field" />
               <label htmlFor="sendto">
                 <span>Send To:</span>
-                <input type="text" placeholder="Email Address" />
+                <select name="" id="">
+                  <option value="mikecaliendo@andrie.com">
+                    Sales & Information
+                  </option>
+                  <option value="mstump@andrie.com">
+                    Environmental/Safety
+                  </option>
+                  <option value="careers@andrie.com">Careers</option>
+                  <option value="scott.tolinski@gmail.com">Test Email</option>
+                </select>
               </label>
               <label htmlFor="from">
                 <span>From:</span>
