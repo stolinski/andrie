@@ -45,7 +45,10 @@ const EquipmentPage = ({ data: { wordpressWpEquipment } }) => (
         <ul>
           <li>Name Mike Caliendo</li>
           <li>Phone 231.332.9243</li>
-          <li>Email mikecaliendo@andrie.com</li>
+          <li>
+            Email{' '}
+            <a href="mailto:mikecaliendo@andrie.com">mikecaliendo@andrie.com</a>
+          </li>
         </ul>
       </EquipDetails>
     </EquipBody>
