@@ -41,7 +41,6 @@ const Header = ({ siteTitle }) => (
 export default Header
 
 const HeaderWrapper = styled.header`
-  height: 230px;
   padding: 40px 10% 20px;
   display: flex;
   z-index: 100;

@@ -94,7 +94,7 @@ export const Zone = styled.section`
     hero &&
     css`
       padding-top: calc(130px + 10rem);
-      margin-top: -230px;
+      margin-top: -254px;
       ${above.med`
         margin-top: -130px;
       `};
