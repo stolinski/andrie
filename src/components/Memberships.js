@@ -29,9 +29,9 @@ const Memberships = () => (
       }
     `}
     render={({ allWordpressWpMembership }) => {
-      // const randomMembershipIndex = Math.floor(
-      //   Math.random() * allWordpressWpMembership.edges.length
-      // )
+      const randomMembershipIndex = Math.floor(
+        Math.random() * allWordpressWpMembership.edges.length
+      )
       return (
         <Zone modifiers={['blank', 'center', 'short']}>
           <MembershipSplit>
