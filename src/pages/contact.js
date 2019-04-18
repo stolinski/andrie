@@ -100,6 +100,22 @@ const IndexPage = () => (
           </a>
         </ContactSplit>
       </ContacZone> */}
+          <button
+            onClick={() => {
+              fetch('/.netlify/functions/send-email', {
+                method: 'POST',
+                body: JSON.stringify({
+                  name: 'Scott',
+                  email: 'scott.tolinski@gmail.com',
+                  details: 'scott.tolinski@gmail.com',
+                }),
+              })
+                .then(response => response.json())
+                .then(console.log)
+            }}
+          >
+            HEY WHAT"S UP
+          </button>
         </div>
       </Layout>
     )}
