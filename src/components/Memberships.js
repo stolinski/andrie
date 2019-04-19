@@ -63,6 +63,10 @@ const MembershipSplit = styled(SplitLayout)`
     font-size: 16px;
     margin-bottom: 0;
   }
+  a {
+    color: black;
+  }
+
   ${above.med`
     > * {
       width: 49%;
