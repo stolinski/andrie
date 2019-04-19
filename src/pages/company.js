@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Link, StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
-import Memberships from '../components/MembershipsAll'
+import Memberships from '../components/Memberships'
 import { Zone, darkBlue, Grid, Button, LargeP } from '../elements'
 import { serif } from '../utilities'
 
@@ -137,7 +137,7 @@ const IndexPage = () => (
                 />
               </div>
             </Zone>
-            {/* <Memberships /> */}
+            <Memberships />
             <Zone modifiers={['center']} image={bike} largep>
               <h3>{wordpressPage.acf.zones_page[3].heading}</h3>
               <div
