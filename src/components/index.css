@@ -797,13 +797,21 @@ pre tt:after {
 
 .slick-prev:before,
 .slick-next:before {
-  color: #8aa5d5;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-  font-size: 60px;
+  color: #fff;
+  background: #092540;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+  padding: 10px;
+  transition: 0.3s ease background;
 }
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  background: #325080;
+}
+
 .slick-prev:before {
-  content: '\25C0';
+  content: 'Prev';
 }
 .slick-next:before {
-  content: '\25B6';
+  content: 'Next';
 }
