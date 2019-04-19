@@ -19,12 +19,28 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allWordpressWpOfficer {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       }
     `).then(results => {
       results.data.allWordpressWpEquipment.edges.forEach(({ node }) => {
         createPage({
           path: `/equipment/${node.slug}`,
           component: path.resolve('./src/pages/equipment-single.js'),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      results.data.allWordpressWpOfficer.edges.forEach(({ node }) => {
+        createPage({
+          path: `/officer/${node.slug}`,
+          component: path.resolve('./src/pages/officers.js'),
           context: {
             slug: node.slug,
           },

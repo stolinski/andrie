@@ -11,7 +11,6 @@ const IndexPage = () => {
   const emailTo = useRef()
   const from = useRef()
   const message = useRef()
-  console.log('isSubmitted:', isSubmitted)
   return (
     <StaticQuery
       query={graphql`

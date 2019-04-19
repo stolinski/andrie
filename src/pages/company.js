@@ -1,7 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { StaticQuery } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
 import Memberships from '../components/Memberships'
@@ -65,67 +65,79 @@ const IndexPage = () => (
         </Values>
       </Zone>
       <Everest />
-      <Zone modifiers={['solid', 'center', 'short', 'pale']}>
-        <h3 style={{ color: 'white' }}>Chief Officers</h3>
-        <StaticQuery
-          query={graphql`
-            query {
-              allWordpressWpOfficer(sort: { fields: [acf___weight] }) {
-                edges {
-                  node {
-                    title
-                    featured_media {
-                      localFile {
-                        childImageSharp {
-                          resolutions(width: 200) {
-                            ...GatsbyImageSharpResolutions_withWebp_tracedSVG
-                          }
+      <StaticQuery
+        query={graphql`
+          query {
+            allWordpressWpOfficer(sort: { fields: [acf___weight] }) {
+              edges {
+                node {
+                  title
+                  slug
+                  featured_media {
+                    localFile {
+                      childImageSharp {
+                        resolutions(width: 200) {
+                          ...GatsbyImageSharpResolutions_withWebp_tracedSVG
                         }
                       }
                     }
-                    content
-                    acf {
-                      title
-                    }
+                  }
+                  content
+                  acf {
+                    title
                   }
                 }
               }
             }
-          `}
-          render={({ allWordpressWpOfficer }) => (
-            <Grid>
-              {allWordpressWpOfficer.edges.map(({ node }) => (
-                <Officers>
-                  <Img
-                    resolutions={
-                      node.featured_media.localFile.childImageSharp.resolutions
-                    }
-                  />
-                  <h5>{node.title}</h5>
-                  <p>{node.acf.title}</p>
-                  <div className="window">
-                    <div className="left">
-                      <Img
-                        resolutions={
-                          node.featured_media.localFile.childImageSharp
-                            .resolutions
-                        }
-                      />
+          }
+        `}
+        render={({ allWordpressWpOfficer }) => {
+          var chief = allWordpressWpOfficer.edges.slice(0, 3)
+          var board = allWordpressWpOfficer.edges.slice(3)
+          return (
+            <>
+              <Zone modifiers={['solid', 'center', 'short', 'pale']}>
+                <h3 style={{ color: 'white' }}>Chief Officers</h3>
+                <Grid>
+                  {chief.map(({ node }) => (
+                    <Officers>
+                      <Link to={`/officer/${node.slug}`}>
+                        <Img
+                          resolutions={
+                            node.featured_media.localFile.childImageSharp
+                              .resolutions
+                          }
+                        />
+                      </Link>
                       <h5>{node.title}</h5>
                       <p>{node.acf.title}</p>
-                    </div>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: node.content,
-                      }}
-                    />
-                  </div>
-                </Officers>
-              ))}
-            </Grid>
-          )}
-        />
-      </Zone>
+                    </Officers>
+                  ))}
+                </Grid>
+              </Zone>
+              <Zone modifiers={['solid', 'center', 'short', 'grey']}>
+                <h3 style={{ color: 'white' }}>Board of Directors</h3>
+                <Grid>
+                  {board.map(({ node }) => (
+                    <Officers>
+                      <Link to={`/officer/${node.slug}`}>
+                        <Img
+                          resolutions={
+                            node.featured_media.localFile.childImageSharp
+                              .resolutions
+                          }
+                        />
+                      </Link>
+                      <h5>{node.title}</h5>
+                      <p>{node.acf.title}</p>
+                    </Officers>
+                  ))}
+                </Grid>
+              </Zone>
+            </>
+          )
+        }}
+      />
       <Zone modifiers={['right', 'dark', 'hero']} image={hero}>
         <div className="zone-content">
           <h2>Awards</h2>
@@ -222,40 +234,5 @@ const Officers = styled.div`
   }
   p {
     ${serif()};
-  }
-  .window {
-    pointer-events: none;
-    opacity: 0;
-    z-index: 10;
-    transition: 0.3s ease all;
-    position: absolute;
-    top: -20px;
-    width: 70vw;
-    left: -20px;
-    padding: 20px;
-    background: ${darkBlue};
-    display: flex;
-    .gatsby-image-wrapper {
-      width: 100%;
-    }
-    .left {
-      margin-right: 20px;
-    }
-  }
-  &:hover {
-    .window {
-      opacity: 1;
-    }
-  }
-  &:nth-child(3),
-  &:nth-child(4) {
-    .window {
-      flex-direction: row-reverse;
-      left: auto;
-      right: -20px;
-      .left {
-        margin-left: 20px;
-      }
-    }
   }
 `
