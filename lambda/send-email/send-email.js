@@ -40,9 +40,9 @@ exports.handler = (event, context, callback) => {
   }
 
   const descriptor = {
-    from: `"${body.email}" <no-reply@gql-modules.com>`,
+    from: `"${body.email}" <no-reply@andrie.com>`,
     to: 'scott.tolinski@gmail.com',
-    subject: `${body.name} sent you a message from gql-modules.com`,
+    subject: `Andrie Contact`,
     text: body.details,
   }
 

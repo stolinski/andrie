@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { darkBlue, lightBlue } from '../elements'
+import { darkBlue, lightBlue, above } from '../elements'
 import { sans } from '../utilities'
 
 import logo from '../images/andrie_logo-site.svg'
@@ -69,7 +69,6 @@ const ContactInfo = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
   justify-content: center;
   margin-bottom: 1rem;
   li {
@@ -77,14 +76,19 @@ const ContactInfo = styled.ul`
     padding: 0;
     font-size: 0.875rem;
     text-transform: uppercase;
-    &:after {
-      content: '|';
-      margin: 0 10px;
-    }
-    &:last-child:after {
-      content: '';
-    }
   }
+  ${above.med`
+    display: flex;
+    li {
+      &:after {
+        content: '|';
+        margin: 0 10px;
+      }
+      &:last-child:after {
+        content: '';
+      }
+    }
+  `}
 `
 
 const Copywrite = styled.p`

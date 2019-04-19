@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
@@ -6,77 +6,82 @@ import { Zone, FormBox, blue } from '../elements'
 
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 
-const IndexPage = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        wordpressPage(slug: { eq: "contact" }) {
-          slug
-          acf {
-            zones_page {
-              heading
-              paragraph
+const IndexPage = () => {
+  const emailTo = useRef()
+  const from = useRef()
+  const message = useRef()
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          wordpressPage(slug: { eq: "contact" }) {
+            slug
+            acf {
+              zones_page {
+                heading
+                paragraph
+              }
             }
           }
         }
-      }
-    `}
-    render={({ wordpressPage }) => (
-      <Layout>
-        <div>
-          <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
-            <div className="zone-content">
-              <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: wordpressPage.acf.zones_page[0].paragraph.replace(
-                    /(\r\n|\n|\r)/g,
-                    '<br />'
-                  ),
-                }}
-              />
-            </div>
-          </Zone>
-          <FormBox>
-            <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
-            <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
-            <ContactForm
-              name="contact"
-              method="post"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-            >
-              <input type="hidden" name="bot-field" />
-              <input type="hidden" name="form-name" value="contact" />
-              <label htmlFor="sendto">
-                <span>Send To:</span>
-                <select name="sendto" id="sendto">
-                  <option value="mikecaliendo@andrie.com">
-                    Sales & Information
-                  </option>
-                  <option value="mstump@andrie.com">
-                    Environmental/Safety
-                  </option>
-                  <option value="careers@andrie.com">Careers</option>
-                </select>
-              </label>
-              <label htmlFor="from">
-                <span>From:</span>
-                <input
-                  type="text"
-                  name="from"
-                  id="from"
-                  placeholder="Email Address"
+      `}
+      render={({ wordpressPage }) => (
+        <Layout>
+          <div>
+            <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
+              <div className="zone-content">
+                <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: wordpressPage.acf.zones_page[0].paragraph.replace(
+                      /(\r\n|\n|\r)/g,
+                      '<br />'
+                    ),
+                  }}
                 />
-              </label>
-              <label htmlFor="message">
-                <span>Message:</span>
-                <textarea name="message" id="message" />
-              </label>
-              <button style={{ marginLeft: 'auto' }}>Send</button>
-            </ContactForm>
-          </FormBox>
-          {/* <ContacZone modifiers={['center', 'solid', 'short']}>
+              </div>
+            </Zone>
+            <FormBox>
+              <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
+              <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
+              <ContactForm
+                name="contact"
+                method="post"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="bot-field" />
+                <input type="hidden" name="form-name" value="contact" />
+                <label htmlFor="sendto">
+                  <span>Send To:</span>
+                  <select ref={emailTo} name="sendto" id="sendto">
+                    <option value="mikecaliendo@andrie.com">
+                      Sales & Information
+                    </option>
+                    <option value="mstump@andrie.com">
+                      Environmental/Safety
+                    </option>
+                    <option value="careers@andrie.com">Careers</option>
+                  </select>
+                </label>
+                <label htmlFor="from">
+                  <span>From:</span>
+                  <input
+                    ref={from}
+                    type="text"
+                    name="from"
+                    id="from"
+                    placeholder="Email Address"
+                  />
+                </label>
+                <label htmlFor="message">
+                  <span>Message:</span>
+                  <textarea ref={message} name="message" id="message" />
+                </label>
+                <button style={{ marginLeft: 'auto' }}>Send</button>
+              </ContactForm>
+            </FormBox>
+            {/* <ContacZone modifiers={['center', 'solid', 'short']}>
         <h3>Connect</h3>
         <h4>Learn more about Andrie and join our community online.</h4>
         <ContactSplit>
@@ -100,27 +105,29 @@ const IndexPage = () => (
           </a>
         </ContactSplit>
       </ContacZone> */}
-          <button
-            onClick={() => {
-              fetch('/.netlify/functions/send-email', {
-                method: 'POST',
-                body: JSON.stringify({
-                  name: 'Scott',
-                  email: 'scott.tolinski@gmail.com',
-                  details: 'scott.tolinski@gmail.com',
-                }),
-              })
-                .then(response => response.json())
-                .then(console.log)
-            }}
-          >
-            HEY WHAT"S UP
-          </button>
-        </div>
-      </Layout>
-    )}
-  />
-)
+            {/* <button
+              onClick={() => {
+                console.log(emailTo, from, message)
+                fetch('/.netlify/functions/send-email', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    name: 'Scott',
+                    email: 'scott.tolinski@gmail.com',
+                    details: 'scott.tolinski@gmail.com',
+                  }),
+                })
+                  .then(response => response.json())
+                  .then(console.log)
+              }}
+            >
+              HEY WHAT"S UP
+            </button> */}
+          </div>
+        </Layout>
+      )}
+    />
+  )
+}
 
 export default IndexPage
 
