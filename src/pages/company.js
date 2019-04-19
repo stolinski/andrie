@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Link, StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
-import Memberships from '../components/Memberships'
+import Memberships from '../components/MembershipsAll'
 import { Zone, darkBlue, Grid, Button, LargeP } from '../elements'
 import { serif } from '../utilities'
 
@@ -176,7 +176,7 @@ const IndexPage = () => (
           </ul>
         </div>
       </Zone>
-      <Memberships />
+      {/* <Memberships /> */}
       <Zone modifiers={['center']} image={bike}>
         <h3>Community Sponsorships</h3>
         <LargeP>

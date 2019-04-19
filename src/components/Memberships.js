@@ -3,24 +3,18 @@ import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import { Zone, SplitLayout, above } from '../elements'
 
-const randomMembershipIndex = 0
-
 const Memberships = () => (
   <StaticQuery
     query={graphql`
       query {
-        allWordpressWpMembership {
-          edges {
-            node {
-              title
-              content
-              featured_media {
-                localFile {
-                  childImageSharp {
-                    resize(height: 200) {
-                      src
-                    }
-                  }
+        wordpressWpMembership(acf: { featured_membership: { eq: true } }) {
+          title
+          content
+          featured_media {
+            localFile {
+              childImageSharp {
+                resize(height: 200) {
+                  src
                 }
               }
             }
@@ -28,38 +22,25 @@ const Memberships = () => (
         }
       }
     `}
-    render={({ allWordpressWpMembership }) => {
-      const randomMembershipIndex = Math.floor(
-        Math.random() * allWordpressWpMembership.edges.length
-      )
+    render={({ wordpressWpMembership }) => {
       return (
         <Zone modifiers={['blank', 'center', 'short']}>
           <MembershipSplit>
             <div>
               <img
-                alt={
-                  allWordpressWpMembership.edges[randomMembershipIndex].node
-                    .title
-                }
+                alt={wordpressWpMembership.title}
                 src={
-                  allWordpressWpMembership.edges[randomMembershipIndex].node
-                    .featured_media.localFile.childImageSharp.resize.src
+                  wordpressWpMembership.featured_media.localFile.childImageSharp
+                    .resize.src
                 }
               />
             </div>
             <div>
               <h4>Featured Membership</h4>
-              <h5>
-                {
-                  allWordpressWpMembership.edges[randomMembershipIndex].node
-                    .title
-                }
-              </h5>
+              <h5>{wordpressWpMembership.title}</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html:
-                    allWordpressWpMembership.edges[randomMembershipIndex].node
-                      .content,
+                  __html: wordpressWpMembership.content,
                 }}
               />
             </div>
