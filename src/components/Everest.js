@@ -98,8 +98,8 @@ class Everest extends Component {
               </TrackDots>
             </TrackLineContainer>
             <TrackButtons>
-              <TrackButton onClick={this.prev}>{left}</TrackButton>
-              <TrackButton onClick={this.next}>{right}</TrackButton>
+              <TrackButton onClick={this.prev}>Prev</TrackButton>
+              <TrackButton onClick={this.next}>Next</TrackButton>
             </TrackButtons>
           </Track>
         </TrackWrapper>
@@ -243,12 +243,17 @@ const SlideTrack = styled.div`
 `
 
 const TrackButton = styled.button`
-  width: 30px;
   height: 30px;
+  color: white;
   display: flex;
   border: none;
   pointer-events: all;
   background: ${brightBlue};
+  transition: 0.3s ease background;
+  cursor: pointer;
+  &:hover {
+    background: ${blue};
+  }
 `
 const Slide = styled.div`
   display: flex;
@@ -274,6 +279,9 @@ const Slide = styled.div`
     font-size: 16px;
     line-height: 1.625;
     ${serif()};
+  }
+  a {
+    color: black;
   }
 `
 
