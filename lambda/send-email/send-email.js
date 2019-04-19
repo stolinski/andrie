@@ -13,7 +13,7 @@ exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body)
 
   try {
-    validateLength('body.name', body.name, 3, 50)
+    validateLength('body.from', body.from, 3, 50)
   } catch (e) {
     return callback(null, {
       statusCode: 403,
@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
   }
 
   try {
-    validateEmail('body.email', body.email)
+    validateEmail('body.emailTo', body.emailTo)
   } catch (e) {
     return callback(null, {
       statusCode: 403,
@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
   }
 
   try {
-    validateLength('body.details', body.details, 10, 1000)
+    validateLength('body.message', body.message, 10, 1000)
   } catch (e) {
     return callback(null, {
       statusCode: 403,
@@ -40,11 +40,12 @@ exports.handler = (event, context, callback) => {
   }
 
   const descriptor = {
-    from: `"${body.email}" <no-reply@andrie.com>`,
-    to: 'scott.tolinski@gmail.com',
-    subject: `Andrie Contact`,
-    text: body.details,
+    from: `"${body.from}" <no-reply@andrie.com>`,
+    to: `scott.tolinski@gmail.com`,
+    subject: `Andrie Contact Form`,
+    text: body.message,
   }
+  //TODO add email from to this
 
   sendMail(descriptor, e => {
     if (e) {
@@ -55,7 +56,7 @@ exports.handler = (event, context, callback) => {
     } else {
       callback(null, {
         statusCode: 200,
-        body: '',
+        body: 'Success',
       })
     }
   })

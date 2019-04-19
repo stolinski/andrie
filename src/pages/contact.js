@@ -7,9 +7,11 @@ import { Zone, FormBox, blue } from '../elements'
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 
 const IndexPage = () => {
+  const [isSubmitted, setSubmitted] = useState(false)
   const emailTo = useRef()
   const from = useRef()
   const message = useRef()
+  console.log('isSubmitted:', isSubmitted)
   return (
     <StaticQuery
       query={graphql`
@@ -44,42 +46,58 @@ const IndexPage = () => {
             <FormBox>
               <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
               <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
-              <ContactForm
-                name="contact"
-                method="post"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-              >
-                <input type="hidden" name="bot-field" />
-                <input type="hidden" name="form-name" value="contact" />
-                <label htmlFor="sendto">
-                  <span>Send To:</span>
-                  <select ref={emailTo} name="sendto" id="sendto">
-                    <option value="mikecaliendo@andrie.com">
-                      Sales & Information
-                    </option>
-                    <option value="mstump@andrie.com">
-                      Environmental/Safety
-                    </option>
-                    <option value="careers@andrie.com">Careers</option>
-                  </select>
-                </label>
-                <label htmlFor="from">
-                  <span>From:</span>
-                  <input
-                    ref={from}
-                    type="text"
-                    name="from"
-                    id="from"
-                    placeholder="Email Address"
-                  />
-                </label>
-                <label htmlFor="message">
-                  <span>Message:</span>
-                  <textarea ref={message} name="message" id="message" />
-                </label>
-                <button style={{ marginLeft: 'auto' }}>Send</button>
-              </ContactForm>
+              {isSubmitted ? (
+                <h4>Thank you for contacting Andrie</h4>
+              ) : (
+                <ContactForm
+                  name="contact"
+                  onSubmit={e => {
+                    e.preventDefault()
+                    fetch('/.netlify/functions/send-email', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        emailTo: emailTo.current.value,
+                        from: from.current.value,
+                        message: message.current.value,
+                      }),
+                    }).then(res => {
+                      console.log('res:', res)
+                      if (res.status === 200) {
+                        console.log('hiii:')
+                        setSubmitted(true)
+                      }
+                    })
+                  }}
+                >
+                  <label htmlFor="sendto">
+                    <span>Send To:</span>
+                    <select ref={emailTo} name="sendto" id="sendto">
+                      <option value="mikecaliendo@andrie.com">
+                        Sales & Information
+                      </option>
+                      <option value="mstump@andrie.com">
+                        Environmental/Safety
+                      </option>
+                      <option value="careers@andrie.com">Careers</option>
+                    </select>
+                  </label>
+                  <label htmlFor="from">
+                    <span>From:</span>
+                    <input
+                      ref={from}
+                      type="text"
+                      name="from"
+                      id="from"
+                      placeholder="Email Address"
+                    />
+                  </label>
+                  <label htmlFor="message">
+                    <span>Message:</span>
+                    <textarea ref={message} name="message" id="message" />
+                  </label>
+                  <button style={{ marginLeft: 'auto' }}>Send</button>
+                </ContactForm>
+              )}
             </FormBox>
             {/* <ContacZone modifiers={['center', 'solid', 'short']}>
         <h3>Connect</h3>
@@ -105,23 +123,6 @@ const IndexPage = () => {
           </a>
         </ContactSplit>
       </ContacZone> */}
-            {/* <button
-              onClick={() => {
-                console.log(emailTo, from, message)
-                fetch('/.netlify/functions/send-email', {
-                  method: 'POST',
-                  body: JSON.stringify({
-                    name: 'Scott',
-                    email: 'scott.tolinski@gmail.com',
-                    details: 'scott.tolinski@gmail.com',
-                  }),
-                })
-                  .then(response => response.json())
-                  .then(console.log)
-              }}
-            >
-              HEY WHAT"S UP
-            </button> */}
           </div>
         </Layout>
       )}
