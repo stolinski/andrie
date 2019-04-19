@@ -41,7 +41,11 @@ const IndexPage = () => {
             </Zone>
             <FormBox>
               <h3>{wordpressPage.acf.zones_page[1].heading}</h3>
-              <p>{wordpressPage.acf.zones_page[1].paragraph}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: wordpressPage.acf.zones_page[1].paragraph,
+                }}
+              />
               {isSubmitted ? (
                 <h4>Thank you for contacting Andrie</h4>
               ) : (
