@@ -27,7 +27,7 @@ const ServicesPage = () => (
           <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
             <div className="zone-content">
               <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-              <p
+              <div
                 dangerouslySetInnerHTML={{
                   __html: wordpressPage.acf.zones_page[0].paragraph,
                 }}
@@ -35,16 +35,16 @@ const ServicesPage = () => (
             </div>
             <div className="zone-content zone-content--secondary">
               <h2>{wordpressPage.acf.zones_page[1].heading}</h2>
-              <p
+              <div
                 dangerouslySetInnerHTML={{
                   __html: wordpressPage.acf.zones_page[1].paragraph,
                 }}
               />
             </div>
           </Zone>
-          <Zone modifiers={['solid', 'center', 'short', 'grey']}>
+          <Zone modifiers={['solid', 'center', 'short', 'grey']} largep>
             <h3>{wordpressPage.acf.zones_page[2].heading}</h3>
-            <LargeP
+            <div
               dangerouslySetInnerHTML={{
                 __html: wordpressPage.acf.zones_page[2].paragraph,
               }}

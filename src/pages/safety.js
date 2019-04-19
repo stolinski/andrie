@@ -26,7 +26,7 @@ const IndexPage = () => (
           <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
             <div className="zone-content">
               <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-              <p
+              <div
                 dangerouslySetInnerHTML={{
                   __html: wordpressPage.acf.zones_page[0].paragraph,
                 }}

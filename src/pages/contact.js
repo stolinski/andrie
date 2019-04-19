@@ -32,12 +32,9 @@ const IndexPage = () => {
             <Zone modifiers={['dark']} right={true} hero={true} image={rebecca}>
               <div className="zone-content">
                 <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
-                    __html: wordpressPage.acf.zones_page[0].paragraph.replace(
-                      /(\r\n|\n|\r)/g,
-                      '<br />'
-                    ),
+                    __html: wordpressPage.acf.zones_page[0].paragraph,
                   }}
                 />
               </div>

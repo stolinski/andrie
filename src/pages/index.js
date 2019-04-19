@@ -96,7 +96,7 @@ const IndexPage = () => (
             <Zone modifiers={['dark']} right={true} hero={true} image={hero}>
               <div className="zone-content">
                 <h2>{wordpressPage.acf.zones_page[0].heading}</h2>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: wordpressPage.acf.zones_page[0].paragraph,
                   }}
@@ -107,7 +107,7 @@ const IndexPage = () => (
             <Zone modifiers={['noOverlay']} left={true} image={greatLakes}>
               <div className="zone-content">
                 <h2>{wordpressPage.acf.zones_page[1].heading}</h2>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: wordpressPage.acf.zones_page[1].paragraph,
                   }}
@@ -146,7 +146,7 @@ const IndexPage = () => (
             <Zone left={true} image={barbara}>
               <div className="zone-content">
                 <h2>{wordpressPage.acf.zones_page[2].heading}</h2>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: wordpressPage.acf.zones_page[2].paragraph,
                   }}
