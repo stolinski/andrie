@@ -11,6 +11,13 @@ export default class Footer extends Component {
     return (
       <FooterContainer>
         <FooterNav>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://andrietg.sharepoint.com/employeeportal/_layouts/15/acceptinvite.aspx?invitation=%7B85D90B87-9727-4D23-A8C8-24398DA9549E%7D"
+          >
+            Employee Portal
+          </a>
           <Link to="/jobs">Current Job Openings</Link>
           <Link to="/company">About Andrie</Link>
           <Link to="/contact">Contact</Link>
