@@ -14,7 +14,7 @@ export default class Footer extends Component {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://andrietg.sharepoint.com/sites/employeeportal/_layouts/15/acceptinvite.aspx?invitation=%7B0169C870-3101-4CF1-BEE1-764AAA55BB8E%7D"
+            href="https://andrietg.sharepoint.com"
           >
             Employee Portal
           </a>
