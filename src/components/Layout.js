@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 
 import Header from './header'
 import Footer from './Footer'
+import favicon from '../images/favicon.ico'
 
 import './index.css'
 require('typeface-montserrat')
@@ -28,6 +29,12 @@ const Layout = ({ children }) => (
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
+          link={[
+              {"rel": "icon", 
+               "type": "image/png", 
+               "href": favicon
+              }
+             ]}
         />
         <Header siteTitle={data.site.siteMetadata.title} />
         <div>{children}</div>

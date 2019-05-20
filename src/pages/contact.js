@@ -8,9 +8,10 @@ import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
 
 const IndexPage = () => {
   const [isSubmitted, setSubmitted] = useState(false)
-  const emailTo = useRef()
-  const from = useRef()
-  const message = useRef()
+  const [email, setEmail] = useState('mikecaliendo@andrie.com')
+  const [cc, setCC] = useState('ehansen@andrie.com')
+  const [from, setFrom] = useState('')
+  const [message, setMessage] = useState('')
   return (
     <StaticQuery
       query={graphql`
@@ -51,40 +52,47 @@ const IndexPage = () => {
               ) : (
                 <ContactForm
                   name="contact"
-                  onSubmit={e => {
-                    e.preventDefault()
-                    fetch('/.netlify/functions/send-email', {
-                      method: 'POST',
-                      body: JSON.stringify({
-                        emailTo: emailTo.current.value,
-                        from: from.current.value,
-                        message: message.current.value,
-                      }),
-                    }).then(res => {
-                      console.log('res:', res)
-                      if (res.status === 200) {
-                        console.log('hiii:')
-                        setSubmitted(true)
-                      }
-                    })
-                  }}
+                  action={`https://formspree.io/${email}`}
+                  method="POST"
                 >
+                  <input type="hidden" name="_cc" value={cc} />
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="Andrie Contact Form Submission"
+                  />
                   <label htmlFor="sendto">
                     <span>Send To:</span>
-                    <select ref={emailTo} name="sendto" id="sendto">
-                      <option value="mikecaliendo@andrie.com">
+                    <select
+                      onChange={e => {
+                        setEmail(e.target.value)
+                        setCC(
+                          e.target.selectedOptions[0].getAttribute('data-cc')
+                        )
+                      }}
+                      name="sendto"
+                      id="sendto"
+                    >
+                      <option
+                        value="mikecaliendo@andrie.com"
+                        data-cc="ehansen@andrie.com"
+                      >
                         Sales & Information
                       </option>
-                      <option value="mstump@andrie.com">
+                      <option
+                        value="mstump@andrie.com"
+                        data-cc="jholmes@andrie.com"
+                      >
                         Environmental/Safety
                       </option>
-                      <option value="careers@andrie.com">Careers</option>
+                      <option value="hr@andrie.com">Careers</option>
                     </select>
                   </label>
                   <label htmlFor="from">
                     <span>From:</span>
                     <input
-                      ref={from}
+                      value={from}
+                      onChange={e => setFrom(e.target.value)}
                       type="text"
                       name="from"
                       id="from"
@@ -93,7 +101,12 @@ const IndexPage = () => {
                   </label>
                   <label htmlFor="message">
                     <span>Message:</span>
-                    <textarea ref={message} name="message" id="message" />
+                    <textarea
+                      onChange={e => setMessage(e.target.value)}
+                      value={message}
+                      name="message"
+                      id="message"
+                    />
                   </label>
                   <button style={{ marginLeft: 'auto' }}>Send</button>
                 </ContactForm>
