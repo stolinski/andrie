@@ -5,22 +5,22 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
-    "gatsby": "^2.5.7",
-    "gatsby-image": "^2.1.0",
+    "gatsby": "^2.9.2",
+    "gatsby-image": "^2.1.4",
     "gatsby-link": "^2.1.1",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sharp": "^2.0.37",
+    "gatsby-plugin-sharp": "^2.1.5",
     "gatsby-plugin-styled-components": "^3.0.7",
-    "gatsby-source-wordpress": "^3.0.62",
-    "gatsby-transformer-sharp": "^2.1.19",
-    "netlify-lambda": "^1.4.11",
+    "gatsby-source-wordpress": "^3.0.65",
+    "gatsby-transformer-sharp": "^2.1.21",
+    "netlify-lambda": "^1.4.13",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-slick": "^0.23.2",
-    "styled-components": "^4.2.0",
-    "styled-components-modifiers": "^1.1.1",
+    "styled-components": "^4.3.1",
+    "styled-components-modifiers": "^1.2.1",
     "typeface-merriweather": "^0.0.72",
     "typeface-montserrat": "^0.0.54"
   },
@@ -35,7 +35,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^1.17.1"
+    "prettier": "^1.18.2"
   },
   "repository": {
     "type": "git",

@@ -89,10 +89,10 @@ const IndexPage = () => (
               </Values>
             </Zone>
             <Everest />
-            <Zone modifiers={['solid', 'center', 'short', 'pale']}>
-              <h3 style={{ color: 'white' }}>Chief Officers</h3>
+            <Zone modifiers={['solid', 'center', 'short', 'grey']}>
+              <h3 style={{ color: 'white' }}>Board of Directors</h3>
               <Grid>
-                {chief.map(({ node }) => (
+                {board.map(({ node }) => (
                   <Officers>
                     <Link to={`/officer/${node.slug}`}>
                       <Img
@@ -108,10 +108,10 @@ const IndexPage = () => (
                 ))}
               </Grid>
             </Zone>
-            <Zone modifiers={['solid', 'center', 'short', 'grey']}>
-              <h3 style={{ color: 'white' }}>Board of Directors</h3>
+            <Zone modifiers={['solid', 'center', 'short', 'pale']}>
+              <h3 style={{ color: 'white' }}>Chief Officers</h3>
               <Grid>
-                {board.map(({ node }) => (
+                {chief.map(({ node }) => (
                   <Officers>
                     <Link to={`/officer/${node.slug}`}>
                       <Img

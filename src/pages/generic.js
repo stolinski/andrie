@@ -11,12 +11,12 @@ const GenericPage = ({ data: { wordpressPage } }) => (
   <Layout>
     <Zone modifiers={['dark', 'solid']} hero={true} image={hero}>
       <JobsLayout>
-        <JobsImageCol>
+        {/* <JobsImageCol>
           {wordpressPage.acf.images &&
             wordpressPage.acf.images.map(({ image }) => (
               <Img fluid={image.localFile.childImageSharp.fluid} />
             ))}
-        </JobsImageCol>
+        </JobsImageCol> */}
         <div>
           <h2>{wordpressPage.title}</h2>
           <div
@@ -55,19 +55,19 @@ export const query = graphql`
     wordpressPage(slug: { eq: $slug }) {
       content
       title
-      acf {
-        images {
-          image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-          }
-        }
-      }
+      # acf {
+      #   images {
+      #     image {
+      #       localFile {
+      #         childImageSharp {
+      #           fluid(maxWidth: 1000) {
+      #             ...GatsbyImageSharpFluid_tracedSVG
+      #           }
+      #         }
+      #       }
+      #     }
+      #   }
+      # }
     }
   }
 `
