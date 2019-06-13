@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'

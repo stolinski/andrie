@@ -33,8 +33,8 @@ const IndexPage = () => (
               featured_media {
                 localFile {
                   childImageSharp {
-                    resolutions(width: 200) {
-                      ...GatsbyImageSharpResolutions_withWebp_tracedSVG
+                    fluid(maxWidth: 200) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -96,9 +96,8 @@ const IndexPage = () => (
                   <Officers>
                     <Link to={`/officer/${node.slug}`}>
                       <Img
-                        resolutions={
-                          node.featured_media.localFile.childImageSharp
-                            .resolutions
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
                         }
                       />
                     </Link>
@@ -115,9 +114,8 @@ const IndexPage = () => (
                   <Officers>
                     <Link to={`/officer/${node.slug}`}>
                       <Img
-                        resolutions={
-                          node.featured_media.localFile.childImageSharp
-                            .resolutions
+                        fluid={
+                          node.featured_media.localFile.childImageSharp.fluid
                         }
                       />
                     </Link>

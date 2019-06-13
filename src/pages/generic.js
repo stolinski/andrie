@@ -55,19 +55,19 @@ export const query = graphql`
     wordpressPage(slug: { eq: $slug }) {
       content
       title
-      # acf {
-      #   images {
-      #     image {
-      #       localFile {
-      #         childImageSharp {
-      #           fluid(maxWidth: 1000) {
-      #             ...GatsbyImageSharpFluid_tracedSVG
-      #           }
-      #         }
-      #       }
-      #     }
-      #   }
-      # }
+      acf {
+        images {
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 `
