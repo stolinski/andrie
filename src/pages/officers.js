@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
-import { Zone } from '../elements'
+import { Zone, above } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 
@@ -36,20 +36,23 @@ const GenericPage = ({ data: { wordpressWpOfficer } }) => (
 export default GenericPage
 
 const JobsLayout = styled.div`
-  display: flex;
-  > *:first-child {
-    width: 40%;
-    margin-right: 5%;
-  }
-  > *:nth-child(2) {
-    flex: 1;
-  }
+  ${above.med`
+    display: flex;
+    > *:first-child {
+      width: 40%;
+      margin-right: 5%;
+    }
+    > *:nth-child(2) {
+      flex: 1;
+    }  
+  `}
 `
 
 const JobsImageCol = styled.div`
   img,
   .gatsby-image-wrapper {
-    margin-bottom: 2rem;
+    display: block !important;
+    margin: 0 auto 2rem;
   }
 `
 
