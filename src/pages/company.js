@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { Link, StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Everest from '../components/Everest'
@@ -41,6 +41,7 @@ const IndexPage = () => (
               }
               content
               acf {
+                board_member
                 title
               }
             }
@@ -49,8 +50,12 @@ const IndexPage = () => (
       }
     `}
     render={({ wordpressPage, allWordpressWpOfficer }) => {
-      var chief = allWordpressWpOfficer.edges.slice(0, 3)
-      var board = allWordpressWpOfficer.edges.slice(3)
+      var chief = allWordpressWpOfficer.edges.filter(
+        officer => !officer.node.acf.board_member
+      )
+      var board = allWordpressWpOfficer.edges.filter(
+        officer => !!officer.node.acf.board_member
+      )
       return (
         <Layout>
           <div>
