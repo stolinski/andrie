@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { StaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
-import { Zone } from '../elements'
+import { Zone, above } from '../elements'
 
 import hero from '../images/Home-HeroSpace.jpg'
 import rebecca from '../images/Rebecca-Lynn-5-17-15-BRW-1.jpg'
@@ -46,14 +46,16 @@ const JobsPage = () => (
 export default JobsPage
 
 const JobsLayout = styled.div`
-  display: flex;
-  > *:first-child {
-    width: 40%;
-    margin-right: 5%;
-  }
-  > *:nth-child(2) {
-    flex: 1;
-  }
+  ${above.med`
+    display: flex;
+    > *:first-child {
+      width: 40%;
+      margin-right: 5%;
+    }
+    > *:nth-child(2) {
+      flex: 1;
+    }  
+  `}
 `
 
 const JobsImageCol = styled.div`
