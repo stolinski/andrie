@@ -9,7 +9,7 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.1.5",
     "gatsby-plugin-styled-components": "^3.0.7",
-    "gatsby-source-wordpress": "^3.0.65",
+    "gatsby-source-wordpress": "^4.0.8",
     "gatsby-transformer-sharp": "^2.1.21",
     "netlify-lambda": "^1.4.13",
     "react": "^16.8.6",
