@@ -41,7 +41,7 @@ const EquipmentPage = () => (
             </EquipHeading>
             <Grid>
               {allWordpressWpEquipment.edges
-                .filter(item => item.node.acf.type === 'tugboat')
+                .filter((item) => item.node.acf.type === 'tugboat')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
                     {node.featured_media && node.featured_media.localFile && (
@@ -62,7 +62,7 @@ const EquipmentPage = () => (
             </EquipHeading>
             <Grid>
               {allWordpressWpEquipment.edges
-                .filter(item => item.node.acf.type === 'barge')
+                .filter((item) => item.node.acf.type === 'barge')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
                     {node.featured_media && node.featured_media.localFile && (
@@ -77,34 +77,38 @@ const EquipmentPage = () => (
                 ))}
             </Grid>
           </Zone>
+          {allWordpressWpEquipment.edges.filter(
+            (item) => item.node.acf.type === 'jackup'
+          ).length > 0 && (
+            <Zone modifiers={['solid', 'short']} image={hero}>
+              <EquipHeading>
+                <h3>Jack-up Barges</h3>
+              </EquipHeading>
+              <Grid>
+                {allWordpressWpEquipment.edges
+                  .filter((item) => item.node.acf.type === 'jackup')
+                  .map(({ node }) => (
+                    <EquipItem to={`/equipment/${node.slug}`}>
+                      {node.featured_media && node.featured_media.localFile && (
+                        <Img
+                          fluid={
+                            node.featured_media.localFile.childImageSharp.fluid
+                          }
+                        />
+                      )}
+                      <h6>{node.title}</h6>
+                    </EquipItem>
+                  ))}
+              </Grid>
+            </Zone>
+          )}
           <Zone modifiers={['solid', 'short']} image={hero}>
-            <EquipHeading>
-              <h3>Jack-up Barges</h3>
-            </EquipHeading>
-            <Grid>
-              {allWordpressWpEquipment.edges
-                .filter(item => item.node.acf.type === 'jackup')
-                .map(({ node }) => (
-                  <EquipItem to={`/equipment/${node.slug}`}>
-                    {node.featured_media && node.featured_media.localFile && (
-                      <Img
-                        fluid={
-                          node.featured_media.localFile.childImageSharp.fluid
-                        }
-                      />
-                    )}
-                    <h6>{node.title}</h6>
-                  </EquipItem>
-                ))}
-            </Grid>
-          </Zone>
-          <Zone modifiers={['solid', 'pale', 'short']} image={hero}>
             <EquipHeading>
               <h3>Other Equipment</h3>
             </EquipHeading>
             <Grid>
               {allWordpressWpEquipment.edges
-                .filter(item => item.node.acf.type === 'other')
+                .filter((item) => item.node.acf.type === 'other')
                 .map(({ node }) => (
                   <EquipItem to={`/equipment/${node.slug}`}>
                     {node.featured_media && node.featured_media.localFile && (

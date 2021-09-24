@@ -5,27 +5,27 @@ import { above, lightBlue } from '../elements'
 
 const Links = [
   {
-    link: 'safety',
+    link: '/safety',
     label: 'Safety',
   },
   {
-    link: 'company',
+    link: '/company',
     label: 'Company',
   },
   {
-    link: 'services',
+    link: '/services',
     label: 'services & sites',
   },
   {
-    link: 'equipment',
+    link: '/equipment',
     label: 'Equipment',
   },
   {
-    link: 'jobs',
+    link: '/jobs',
     label: 'Jobs',
   },
   {
-    link: 'contact',
+    link: '/contact',
     label: 'Contact',
   },
 ]

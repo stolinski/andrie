@@ -43,12 +43,20 @@ const EquipmentPage = ({ data: { wordpressWpEquipment } }) => (
         </ul>
         <h3>For more information, please contact:</h3>
         <ul>
-          <li>Name Mike Caliendo</li>
-          <li>Phone 231.332.9243</li>
-          <li>
-            Email{' '}
-            <a href="mailto:mikecaliendo@andrie.com">mikecaliendo@andrie.com</a>
-          </li>
+          {wordpressWpEquipment.acf.contact_name && (
+            <li>Name: {wordpressWpEquipment.acf.contact_name}</li>
+          )}
+          {wordpressWpEquipment.acf.contact_phone && (
+            <li>Phone: {wordpressWpEquipment.acf.contact_phone}</li>
+          )}
+          {wordpressWpEquipment.acf.contact_email && (
+            <li>
+              Email:{' '}
+              <a href={`mailto:{wordpressWpEquipment.acf.contact_email}`}>
+                {wordpressWpEquipment.acf.contact_email}
+              </a>
+            </li>
+          )}
         </ul>
       </EquipDetails>
     </EquipBody>
@@ -138,6 +146,9 @@ export const query = graphql`
         power
         length
         capacity
+        contact_name
+        contact_email
+        contact_phone
       }
     }
   }
